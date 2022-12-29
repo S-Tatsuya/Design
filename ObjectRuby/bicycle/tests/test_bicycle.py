@@ -4,14 +4,14 @@ import math
 
 
 def test_gear():
-    gear = Gear(52, 11, 26, 1.5)
+    gear = Gear(52, 11, Wheel(26, 1.5))
     result = 52 / 11
     assert math.isclose(result, gear.Ratio)
 
     result = (52 / 11) * (26 + (1.5 * 2))
     assert math.isclose(result, gear.GearInches)
 
-    gear = Gear(52, 11, 0, 0)
+    gear = Gear(52, 11)
     result = 52 / 11
     assert math.isclose(result, gear.Ratio)
     assert math.isclose(0, gear.GearInches)

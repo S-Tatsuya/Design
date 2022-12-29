@@ -2,11 +2,10 @@ from src.Wheel import Wheel
 
 
 class Gear:
-    def __init__(self, chainring, cog, rim, tire):
+    def __init__(self, chainring, cog, wheel=Wheel(0, 0)):
         self.__chainring = chainring
         self.__cog = cog
-        self.__rim = rim
-        self.__tire = tire
+        self.__wheel = wheel
 
     @property
     def Ratio(self):
@@ -14,4 +13,4 @@ class Gear:
 
     @property
     def GearInches(self):
-        return self.Ratio * Wheel(self.__rim, self.__tire).Diameter
+        return self.Ratio * self.__wheel.Diameter
