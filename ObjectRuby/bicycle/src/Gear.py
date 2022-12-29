@@ -1,18 +1,11 @@
+from Wheel import Wheel
+
+
 class Gear:
-    # Wheelクラスを独立させる設計の根拠は明確ではないため、Gearクラスの一部として実装する
-    class __Wheel:
-        def __init__(self, rim, tire):
-            self.__rim = rim
-            self.__tire = tire
-
-        @property
-        def Diameter(self):
-            return self.__rim + (self.__tire * 2)
-
-    def __init__(self, chainring, cog, rim, tire):
+    def __init__(self, chainring, cog, wheel: Wheel = Wheel(0, 0)):
         self.__chainring = chainring
         self.__cog = cog
-        self.__wheel = self.__Wheel(rim, tire)
+        self.__wheel = wheel
 
     @property
     def Ratio(self):
@@ -27,5 +20,13 @@ if __name__ == "__main__":
     # コンストラクタの引数を変更したためエラーとなる
     # print(Gear(52, 11).Ratio)
     # print(Gear(30, 27).Ratio)
-    print(Gear(52, 11, 26, 1.5).GearInches)
-    print(Gear(52, 11, 24, 1.25).GearInches)
+
+    wheel = Wheel(26, 1.5)
+    print(wheel.Circumference)
+
+    gear = Gear(52, 11, wheel)
+    print(gear.Ratio)
+    print(gear.GearInches)
+    gear = Gear(52, 11)
+    print(gear.Ratio)
+    print(gear.GearInches)
