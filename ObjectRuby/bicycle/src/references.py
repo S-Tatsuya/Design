@@ -1,3 +1,6 @@
+from collections import namedtuple
+
+
 # 悪い例
 class ObscuringReferences:
     def __init__(self, data: list[list[int]]):
@@ -10,30 +13,18 @@ class ObscuringReferences:
 
 # 良い例
 class RevealingReferences:
+    Wheel = namedtuple("Wheel", "rim tire")
+
     def __init__(self, data: list[list[int]]):
         self.__wheels = self.__wheelify(data)
 
     def diameters(self):
-        return map(lambda wheel: wheel.Rim + (wheel.Tire * 2), self.__wheels)
+        return map(lambda wheel: wheel.rim + (wheel.tire * 2), self.__wheels)
 
     def __wheelify(self, data: list[list[int]]):
         # このメソッドだけが引数のdataの配列構造を知っている
         # 渡す側は結局配列構造を知らないと駄目だけど・・・
-        return map(lambda x: Wheel(x[0], x[1]), data)
-
-
-class Wheel:
-    def __init__(self, rim, tire):
-        self.__rim = rim
-        self.__tire = tire
-
-    @property
-    def Rim(self):
-        return self.__rim
-
-    @property
-    def Tire(self):
-        return self.__tire
+        return map(lambda x: self.Wheel(x[0], x[1]), data)
 
 
 if __name__ == "__main__":
