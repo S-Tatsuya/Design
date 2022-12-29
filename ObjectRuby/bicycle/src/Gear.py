@@ -13,4 +13,7 @@ class Gear:
 
     @property
     def GearInches(self):
-        return self.Ratio * self.__wheel.Diameter
+        return self.Ratio * self.__diameter()
+
+    def __diameter(self):
+        return self.__wheel.Diameter
