@@ -1,4 +1,4 @@
-from Wheel import Wheel
+from src.Wheel import Wheel
 
 
 class Gear:
@@ -14,19 +14,3 @@ class Gear:
     @property
     def GearInches(self):
         return self.Ratio * self.__wheel.Diameter
-
-
-if __name__ == "__main__":
-    # コンストラクタの引数を変更したためエラーとなる
-    # print(Gear(52, 11).Ratio)
-    # print(Gear(30, 27).Ratio)
-
-    wheel = Wheel(26, 1.5)
-    print(wheel.Circumference)
-
-    gear = Gear(52, 11, wheel)
-    print(gear.Ratio)
-    print(gear.GearInches)
-    gear = Gear(52, 11)
-    print(gear.Ratio)
-    print(gear.GearInches)
