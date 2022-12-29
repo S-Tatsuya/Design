@@ -19,12 +19,17 @@ class RevealingReferences:
         self.__wheels = self.__wheelify(data)
 
     def diameters(self):
-        return map(lambda wheel: wheel.rim + (wheel.tire * 2), self.__wheels)
+        # 配列をループするための処理の責任を持つ
+        return map(lambda wheel: self.__diameter(wheel), self.__wheels)
 
     def __wheelify(self, data: list[list[int]]):
         # このメソッドだけが引数のdataの配列構造を知っている
         # 渡す側は結局配列構造を知らないと駄目だけど・・・
         return map(lambda x: self.Wheel(x[0], x[1]), data)
+
+    def __diameter(self, wheel: Wheel):
+        # タイヤの直径を計算する責任を持つ
+        return wheel.rim + (wheel.tire * 2)
 
 
 if __name__ == "__main__":
