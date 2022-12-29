@@ -1,9 +1,18 @@
 class Gear:
+    # Wheelクラスを独立させる設計の根拠は明確ではないため、Gearクラスの一部として実装する
+    class __Wheel:
+        def __init__(self, rim, tire):
+            self.__rim = rim
+            self.__tire = tire
+
+        @property
+        def Diameter(self):
+            return self.__rim + (self.__tire * 2)
+
     def __init__(self, chainring, cog, rim, tire):
         self.__chainring = chainring
         self.__cog = cog
-        self.__rim = rim
-        self.__tire = tire
+        self.__wheel = self.__Wheel(rim, tire)
 
     @property
     def Ratio(self):
@@ -11,11 +20,7 @@ class Gear:
 
     @property
     def GearInches(self):
-        return self.Ratio * self.Diameter
-
-    @property
-    def Diameter(self):
-        return self.__rim + (self.__tire * 2)
+        return self.Ratio * self.__wheel.Diameter
 
 
 if __name__ == "__main__":
