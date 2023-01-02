@@ -12,6 +12,9 @@ class Trip:
         self._customers = [Customer(), Customer(), Customer()]
         self._vehicle = Vehicle()
 
+    def prepare_ducktyping(self, prepares):
+        pass
+
     def prepare(self, prepares):
         for preparer in prepares:
             match preparer:
@@ -27,7 +30,9 @@ class Trip:
 
     def is_ready(self):
         return (
-            self.is_ready_bicycles and self.is_ready_customers and self.is_ready_vehicle
+            self.is_ready_bicycles()
+            and self.is_ready_customers()
+            and self.is_ready_vehicle()
         )
 
     def is_ready_bicycles(self):

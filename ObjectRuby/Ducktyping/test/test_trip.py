@@ -7,6 +7,13 @@ from src.Customer import Customer
 from src.Vehicle import Vehicle
 
 
+# def test_ducktyping():
+#     sut = Trip()
+#     stub = [Mechanic(), TripCoordinator(), Driver()]
+#     sut.prepare_ducktyping(stub)
+#     assert sut.is_ready()
+
+
 def test_trip():
     sut = Trip()
     stub = [Mechanic()]
