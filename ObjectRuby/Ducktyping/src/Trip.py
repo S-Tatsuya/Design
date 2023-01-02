@@ -12,8 +12,21 @@ class Trip:
         self._customers = [Customer(), Customer(), Customer()]
         self._vehicle = Vehicle()
 
-    def prepare_ducktyping(self, prepares):
-        pass
+    @property
+    def Bicycles(self):
+        return self._bicycles
+
+    @property
+    def Customers(self):
+        return self._customers
+
+    @property
+    def Vehicle(self):
+        return self._vehicle
+
+    def prepare_ducktyping(self, preparers):
+        for preparer in preparers:
+            preparer.prepare_trip(self)
 
     def prepare(self, prepares):
         for preparer in prepares:

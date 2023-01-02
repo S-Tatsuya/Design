@@ -1,4 +1,7 @@
 class TripCoordinator:
+    def prepare_trip(self, trip):
+        self.buy_foods(trip.Customers)
+
     def buy_foods(self, customers):
         for customer in customers:
             self.buy_food(customer)

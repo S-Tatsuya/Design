@@ -1,4 +1,7 @@
 class Mechanic:
+    def prepare_trip(self, trip):
+        self.prepare_bicycles(trip.Bicycles)
+
     def prepare_bicycles(self, bicycles):
         for bicycle in bicycles:
             self.prepare_bicycle(bicycle)
