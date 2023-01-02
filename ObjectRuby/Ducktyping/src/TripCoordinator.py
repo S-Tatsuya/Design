@@ -1,5 +1,8 @@
+from src.Trip import Trip
+
+
 class TripCoordinator:
-    def prepare_trip(self, trip):
+    def prepare_trip(self, trip: Trip):
         self.buy_foods(trip.Customers)
 
     def buy_foods(self, customers):

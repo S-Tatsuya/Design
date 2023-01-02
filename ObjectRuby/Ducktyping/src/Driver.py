@@ -1,5 +1,8 @@
+from src.Trip import Trip
+
+
 class Driver:
-    def prepare_trip(self, trip):
+    def prepare_trip(self, trip: Trip):
         self.gas_up(trip.Vehicle)
         self.fill_water_tank(trip.Vehicle)
 

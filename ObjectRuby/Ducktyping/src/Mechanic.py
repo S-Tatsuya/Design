@@ -1,5 +1,8 @@
+from src.Trip import Trip
+
+
 class Mechanic:
-    def prepare_trip(self, trip):
+    def prepare_trip(self, trip: Trip):
         self.prepare_bicycles(trip.Bicycles)
 
     def prepare_bicycles(self, bicycles):

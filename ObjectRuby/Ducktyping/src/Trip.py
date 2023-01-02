@@ -1,9 +1,6 @@
 from src.Bicycle import Bicycle
 from src.Customer import Customer
 from src.Vehicle import Vehicle
-from src.Mechanic import Mechanic
-from src.TripCoordinator import TripCoordinator
-from src.Driver import Driver
 
 
 class Trip:
@@ -24,22 +21,9 @@ class Trip:
     def Vehicle(self):
         return self._vehicle
 
-    def prepare_ducktyping(self, preparers):
+    def prepare(self, preparers):
         for preparer in preparers:
             preparer.prepare_trip(self)
-
-    def prepare(self, prepares):
-        for preparer in prepares:
-            match preparer:
-                case Mechanic():
-                    preparer.prepare_bicycles(self._bicycles)
-
-                case TripCoordinator():
-                    preparer.buy_foods(self._customers)
-
-                case Driver():
-                    preparer.gas_up(self._vehicle)
-                    preparer.fill_water_tank(self._vehicle)
 
     def is_ready(self):
         return (
