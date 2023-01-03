@@ -12,3 +12,7 @@ class MountainBike(Bicycle):
         result = super().spares
         result["rear_shock"] = self._rear_shock
         return result
+
+    @property
+    def default_tire_size(self):
+        return "2.1"
