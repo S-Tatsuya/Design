@@ -1,7 +1,7 @@
 class Bicycle:
     def __init__(self, **kwargs):
-        self._size = kwargs["size"]
-        self._tape_color = kwargs["tape_color"]
+        self._size = kwargs.get("size")
+        self._tape_color = kwargs.get("tape_color")
 
     @property
     def size(self):
