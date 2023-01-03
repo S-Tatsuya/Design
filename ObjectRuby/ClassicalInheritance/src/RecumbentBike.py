@@ -2,10 +2,16 @@ from src.Bicycle import Bicycle
 
 
 class RecumbentBike(Bicycle):
-    def __init__(self, **kwargs):
-        self._tape_color = kwargs.get("tape_color")
-        super().__init__(**kwargs)
+    @property
+    def default_tire_size(self):
+        return "28"
 
     @property
-    def spares(self):
-        return {"chain": "10-speed", "tire_size": "23", "tape_color": self._tape_color}
+    def default_chain(self):
+        return "9-speed"
+
+    def _post_initialize(self, **kwargs):
+        self._flag = kwargs.get("flag")
+
+    def _local_spares(self):
+        return {"flag": self._flag}

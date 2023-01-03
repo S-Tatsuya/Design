@@ -7,6 +7,8 @@ class Bicycle(metaclass=ABCMeta):
         self._chain = kwargs.get("chain") or self.default_chain
         self._tire_size = kwargs.get("tire_size") or self.default_tire_size
 
+        self._post_initialize(**kwargs)
+
     @property
     def size(self):
         return self._size
@@ -24,10 +26,20 @@ class Bicycle(metaclass=ABCMeta):
         return "10-speed"
 
     @property
+    def spares(self):
+        result = {"tire_size": self._tire_size, "chain": self._chain}
+        result.update(self._local_spares())
+        return result
+
+    @property
     @abstractmethod
     def default_tire_size(self):
         pass
 
-    @property
-    def spares(self):
-        return {"tire_size": self._tire_size, "chain": self._chain}
+    @abstractmethod
+    def _post_initialize(self, **kwargs):
+        pass
+
+    @abstractmethod
+    def _local_spares(self) -> dict:
+        pass

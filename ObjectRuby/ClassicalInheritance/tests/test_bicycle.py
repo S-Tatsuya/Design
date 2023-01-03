@@ -1,4 +1,4 @@
-import pytest
+# import pytest
 from src.MountainBike import MountainBike
 from src.RoadBike import RoadBike
 from src.RecumbentBike import RecumbentBike
@@ -25,8 +25,18 @@ def test_mountain():
 
 
 def test_RecumbentBike():
-    with pytest.raises(TypeError):
-        _ = RecumbentBike()
+    sut = RecumbentBike(flag="tall and orange")
+
+    assert sut.spares == {
+        "tire_size": "28",
+        "chain": "9-speed",
+        "flag": "tall and orange",
+    }
+
+
+# def test_RecumbentBike():
+#     with pytest.raises(TypeError):
+#         _ = RecumbentBike()
 
 
 # @abstractmethodを使用しない場合にエラーを検出する方法
