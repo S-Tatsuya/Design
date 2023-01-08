@@ -1,11 +1,11 @@
 from abc import ABCMeta, abstractmethod
-from src.Parts import Parts, RoadBikeParts
+from src.Parts import Parts
 
 
 class Bicycle(metaclass=ABCMeta):
     def __init__(self, **kwargs):
         self._size = kwargs.get("size")
-        self._parts: Parts = kwargs.get("parts") or RoadBikeParts([])
+        self._parts: Parts = kwargs.get("parts") or Parts([])
 
         self._post_initialize(**kwargs)
 
