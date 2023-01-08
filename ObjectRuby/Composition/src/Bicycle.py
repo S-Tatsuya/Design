@@ -5,7 +5,7 @@ from src.Parts import Parts, RoadBikeParts
 class Bicycle(metaclass=ABCMeta):
     def __init__(self, **kwargs):
         self._size = kwargs.get("size")
-        self._parts: Parts = kwargs.get("parts") or RoadBikeParts()
+        self._parts: Parts = kwargs.get("parts") or RoadBikeParts([])
 
         self._post_initialize(**kwargs)
 
@@ -20,6 +20,10 @@ class Bicycle(metaclass=ABCMeta):
     @property
     def spares(self):
         return self._parts.spares
+
+    @property
+    def parts(self):
+        return self._parts.parts
 
     @property
     @abstractmethod

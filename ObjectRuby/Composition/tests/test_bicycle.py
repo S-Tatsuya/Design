@@ -15,6 +15,11 @@ def test_bicycle():
 
     assert sut.size == "M"
     assert sut.spares == {"tire_size": "23", "chain": "10-speed", "tape_color": "red"}
+    assert sut.parts == [
+        ("chain", "10-speed", True),
+        ("tire_size", "23", True),
+        ("tape_color", "red", True),
+    ]
 
 
 def test_mountain():
@@ -29,6 +34,12 @@ def test_mountain():
 
     assert sut.size == "S"
     assert sut.spares == {"tire_size": "2.1", "chain": "10-speed", "rear_shock": "Fox"}
+    assert sut.parts == [
+        ("chain", "10-speed", True),
+        ("tire_size", "2.1", True),
+        ("rear_shock", "Fox", True),
+        ("front_shock", "Manitou", False),
+    ]
 
 
 def test_RecumbentBike():
@@ -45,6 +56,11 @@ def test_RecumbentBike():
         "chain": "9-speed",
         "flag": "tall and orange",
     }
+    assert sut.parts == [
+        ("chain", "9-speed", True),
+        ("tire_size", "28", True),
+        ("flag", "tall and orange", True),
+    ]
 
 
 # def test_RecumbentBike():
