@@ -1,8 +1,7 @@
-from abc import ABCMeta, abstractmethod
 from src.Parts import Parts
 
 
-class Bicycle(metaclass=ABCMeta):
+class Bicycle:
     def __init__(self, **kwargs):
         self._size = kwargs.get("size")
         self._parts: Parts = kwargs.get("parts") or Parts([])
