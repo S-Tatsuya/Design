@@ -2,19 +2,8 @@ from abc import ABCMeta, abstractmethod
 
 
 class Parts(metaclass=ABCMeta):
-    def __init__(self, **kwargs):
-        self._chain = kwargs.get("chain") or self._default_chain
-        self._tire_size = kwargs.get("tire_size") or self._default_tire_size
-
-        self._post_initialize(**kwargs)
-
-    @property
-    def chain(self):
-        return self._chain
-
-    @property
-    def tire_size(self):
-        return self._tire_size
+    def __init__(self, parts):
+        self._parts = parts
 
     @property
     def _default_chain(self):
@@ -27,9 +16,7 @@ class Parts(metaclass=ABCMeta):
 
     @property
     def spares(self):
-        result = {"tire_size": self._tire_size, "chain": self._chain}
-        result.update(self._local_spares())
-        return result
+        return {part.name: part.description for part in self._parts if part.needs_spare}
 
     @abstractmethod
     def _post_initialize(self, **kwargs):
