@@ -6,27 +6,25 @@ from src.Parts import RoadBikeParts, MountainBikeParts, RecumbentBikeParts
 
 
 def test_bicycle():
-    sut = RoadBike(size="M", tape_color="red")
+    sut = RoadBike(size="M", parts=RoadBikeParts(tape_color="red"))
 
     assert sut.size == "M"
-    assert sut.tire_size == "23"
-    assert sut.chain == "10-speed"
     assert sut.spares == {"tire_size": "23", "chain": "10-speed", "tape_color": "red"}
 
 
 def test_mountain():
     sut = MountainBike(
-        style="mountain", size="S", front_shock="Manitou", rear_shock="Fox"
+        style="mountain",
+        size="S",
+        parts=MountainBikeParts(front_shock="Manitou", rear_shock="Fox"),
     )
 
     assert sut.size == "S"
-    assert sut.tire_size == "2.1"
-    assert sut.chain == "10-speed"
     assert sut.spares == {"tire_size": "2.1", "chain": "10-speed", "rear_shock": "Fox"}
 
 
 def test_RecumbentBike():
-    sut = RecumbentBike(flag="tall and orange")
+    sut = RecumbentBike(parts=RecumbentBikeParts(flag="tall and orange"))
 
     assert sut.spares == {
         "tire_size": "28",
