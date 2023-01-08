@@ -7,8 +7,6 @@ class Bicycle(metaclass=ABCMeta):
         self._size = kwargs.get("size")
         self._parts: Parts = kwargs.get("parts") or Parts([])
 
-        self._post_initialize(**kwargs)
-
     @property
     def size(self):
         return self._size
@@ -24,16 +22,3 @@ class Bicycle(metaclass=ABCMeta):
     @property
     def parts(self):
         return self._parts.parts
-
-    @property
-    @abstractmethod
-    def default_tire_size(self):
-        pass
-
-    @abstractmethod
-    def _post_initialize(self, **kwargs):
-        pass
-
-    @abstractmethod
-    def _local_spares(self) -> dict:
-        pass

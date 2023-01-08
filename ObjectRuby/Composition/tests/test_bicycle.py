@@ -1,17 +1,13 @@
 # import pytest
-from src.MountainBike import MountainBike
-from src.RoadBike import RoadBike
-from src.RecumbentBike import RecumbentBike
+from src.Bicycle import Bicycle
 from src.PartsFactory import PartsFactory
-from src.Parts import Parts
-from src.Part import Part
 
 
 def test_bicycle():
     config = [["chain", "10-speed"], ["tire_size", "23"], ["tape_color", "red"]]
     sut_road = PartsFactory.build(config)
 
-    sut = RoadBike(size="M", parts=sut_road)
+    sut = Bicycle(size="M", parts=sut_road)
 
     assert sut.size == "M"
     assert sut.spares == {"tire_size": "23", "chain": "10-speed", "tape_color": "red"}
@@ -30,7 +26,7 @@ def test_mountain():
         ["front_shock", "Manitou", False],
     ]
     sut_mountain = PartsFactory.build(config)
-    sut = MountainBike(style="mountain", size="S", parts=sut_mountain)
+    sut = Bicycle(style="mountain", size="S", parts=sut_mountain)
 
     assert sut.size == "S"
     assert sut.spares == {"tire_size": "2.1", "chain": "10-speed", "rear_shock": "Fox"}
@@ -45,7 +41,7 @@ def test_mountain():
 def test_RecumbentBike():
     config = [["chain", "9-speed"], ["tire_size", "28"], ["flag", "tall and orange"]]
     sut_recumbernt = PartsFactory.build(config)
-    sut = RecumbentBike(parts=sut_recumbernt)
+    sut = Bicycle(parts=sut_recumbernt)
 
     assert sut.spares == {
         "tire_size": "28",
@@ -74,10 +70,8 @@ def test_RecumbentBike():
 
 
 def test_parts():
-    sut_chain = Part(name="chain", description="10-speed")
-    sut_tire = Part(name="tire_size", description="23")
-    sut_tape = Part(name="tape_color", description="red")
-    sut_road = Parts([sut_chain, sut_tire, sut_tape])
+    config = [["chain", "10-speed"], ["tire_size", "23"], ["tape_color", "red"]]
+    sut_road = PartsFactory.build(config)
 
     assert sut_road.spares == {
         "tire_size": "23",
@@ -85,61 +79,28 @@ def test_parts():
         "tape_color": "red",
     }
 
-    sut_mountain_tire = Part(name="tire_size", description="2.1")
-    sut_rear_shock = Part(name="rear_shock", description="Fox")
-    sut_front_shock = Part(name="front_shock", description="Manitou", needs_spare=False)
-    sut_mountain = Parts(
-        [sut_chain, sut_mountain_tire, sut_rear_shock, sut_front_shock]
-    )
+    config = [
+        ["chain", "10-speed"],
+        ["tire_size", "2.1"],
+        ["rear_shock", "Fox"],
+        ["front_shock", "Manitou", False],
+    ]
+    sut_mountain = PartsFactory.build(config)
+
     assert sut_mountain.spares == {
         "tire_size": "2.1",
         "chain": "10-speed",
         "rear_shock": "Fox",
     }
 
-    sut_recumbernt_chain = Part(name="chain", description="9-speed")
-    sut_recumbernt_tire = Part(name="tire_size", description="28")
-    sut_flag = Part(name="flag", description="tall and orange")
-    sut_recumbernt = Parts([sut_recumbernt_chain, sut_recumbernt_tire, sut_flag])
+    config = [["chain", "9-speed"], ["tire_size", "28"], ["flag", "tall and orange"]]
+    sut_recumbernt = PartsFactory.build(config)
 
     assert sut_recumbernt.spares == {
         "tire_size": "28",
         "chain": "9-speed",
         "flag": "tall and orange",
     }
-
-
-def test_part():
-    sut_chain = Part(name="chain", description="10-speed")
-    sut_tire = Part(name="tire_size", description="23")
-    sut_tape = Part(name="tape_color", description="red")
-    sut_mountain_tire = Part(name="tire_size", description="2.1")
-    sut_rear_shock = Part(name="rear_shock", description="Fox")
-    sut_front_shock = Part(name="front_shock", description="Manitou", needs_spare=False)
-
-    assert sut_chain.name == "chain"
-    assert sut_chain.description == "10-speed"
-    assert sut_chain.needs_spare is True
-
-    assert sut_tire.name == "tire_size"
-    assert sut_tire.description == "23"
-    assert sut_tire.needs_spare is True
-
-    assert sut_tape.name == "tape_color"
-    assert sut_tape.description == "red"
-    assert sut_tape.needs_spare is True
-
-    assert sut_mountain_tire.name == "tire_size"
-    assert sut_mountain_tire.description == "2.1"
-    assert sut_mountain_tire.needs_spare is True
-
-    assert sut_rear_shock.name == "rear_shock"
-    assert sut_rear_shock.description == "Fox"
-    assert sut_rear_shock.needs_spare is True
-
-    assert sut_front_shock.name == "front_shock"
-    assert sut_front_shock.description == "Manitou"
-    assert sut_front_shock.needs_spare is False
 
 
 def test_parts_factory():
