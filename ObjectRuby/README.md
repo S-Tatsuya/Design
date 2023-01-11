@@ -51,13 +51,13 @@
         - 送信する側がテストする必要があるメソッド
             - コマンド（命令）のメソッド。副作用の有るメソッド。  
             -> メッセージを適切に送信したことを保証する必要がある。
-            - 送られたことをテストするべき
+                - メッセージの送信にMockを使うことでメッセージの処理内容に依存していないことが確認できる。
         - 送信する側でテストする必要の無いメソッド。
             - クエリ（質問）のメソッド。副作用の無いメソッド。  
             -> 送られたメッセージに対して応答するだけなので、受信ですらメッセージが送られたことを気にしない。
 
 - 状態と振る舞いの考え方
-    - 同じメソッドにが、`状態のテスト`, `振る舞いのテスト`の対象になることを有る。
+    - 同じメソッドが、`状態のテスト`, `振る舞いのテスト`の対象になることを有る。
     - 状態のテスト
         - 受信側でテストする。
             - メソッドの戻り値を表明するテスト
@@ -65,21 +65,26 @@
     - 振る舞いのテスト
         - 送信側でテストする。
             - メソッドを**いつ**、**何回**、**どの引数**、で行ったかのテスト
-- テストの種類：図
+- テストの対象：図
     ``` plantuml
     @startuml
     class SUT {
-        methodA()
+        + methodA()
+        - methodB()
     }
 
     class B {
-        query()
-        command()
+        + query()
+        + command()
     }
 
-    A -> SUT #text:blue :○テスト対象\nSUTは受信側\nmethodA()
+    A --> SUT #text:blue :○テスト対象\nSUTは受信側\nmethodA()
     SUT -> B #text:red :✗テスト対象外\nSUTは送信側\nquery()
     SUT -> B #text:blue :○テスト対象\nSUTは送信側\ncommand()
+    note left of SUT::"methodB()" 
+        <color:red>✗テスト対象外</color>
+        <color:red>プライベートメソッド</color>
+    end note
     @enduml
     ```
 
@@ -119,9 +124,78 @@
     ```
 
 #### ユニットテストの注意点
-- テストコード上にテスト対象オブジェクト以外のオブジェクトの生成がなくても、`テスト対象オブジェクト`内でオブジェクト生成が有る場合は注意する。 
+1. テストコード上にテスト対象オブジェクト以外のオブジェクトの生成がなくても、`テスト対象オブジェクト`内でオブジェクト生成が有る場合は注意する。 
     - 解決策：`テスト対象オブジェクト`が生成する`オブジェクト`は基本的に**依存性の注入**を使用する。
+    - 効果
+        1. 依存関係をテストコードから把握できる。
+        2. ダック・タイピングに対応している場合に`クラス`依存から`メソッド`依存に切り替えられる。
+    - 図:アンチパターン
 
+        ``` plantuml
+        @startuml
+        class Gear {}
+        Test -> Gear : テスト
+        Gear .-> Wheel : 生成
+        note bottom of Gear : Wheelを生成している。\nTestコードからは`Gear`と`Wheel`の依存関係が見えない
+        @enduml
+        ```
+
+
+
+    - 図:変更後
+
+        ``` plantuml
+        @startuml
+        class Gear {}
+        Test -> Gear : `Wheel`を渡してテストする
+        Test --> Wheel : 生成
+        Gear --> Wheel : 使う
+
+        note right of Gear : `Wheel`を依存性の注入で取得する。\n依存関係がTestコードから見える
+        note top of Gear : `Wheel`クラスへの依存ではなく\n`diameter`メソッドへの依存になる。
+        @enduml
+        ```
+
+2. 具象クラス同士を結合したテストは、実行コストが低い場合は効果的だが、抽象クラス（ロール）を使うほうが良い
+    - `テストダブル`を作成して、具象クラスではなく抽象クラスに対して動作を確認する。
+        - <span style="color:red">**Mockではない！！**</span>
+    - `抽象クラス（ロール）`に依存していることが理解しやすくなる。
+    - `Wheel`クラスを使わずにテストができる。
+    - <span style="color:red">課題：`Wheel`クラスのインターフェースが変わっても`Gear`クラスを修正しなくてもテストが通ってしまう。</span>
+
+    - 図:アンチパターン
+
+        ``` plantuml
+        @startuml
+        class Wheel { 
+            diameter()
+        }
+        Test -> Gear : `Wheel`を渡してテストする
+        Test --> Wheel : 生成
+        Gear --> Wheel : 使う
+
+        note right of Gear : 具象(`Wheel`)クラスを使ってテストをする
+        note top of Test : 具象(`Wheel`)クラスを生成している。
+        @enduml
+        ```
+    - 図:変更後
+
+        ``` plantuml
+        @startuml
+        class DiameterDouble {
+            diameter()
+        }
+
+        interface IDiameterable {}
+        Test -> Gear : `DimaeterDouble`を渡してテストする
+        Test --> DiameterDouble : 生成
+        Gear -->  IDiameterable : 使う
+        DiameterDouble -|> IDiameterable
+
+        note right of Gear : 抽象(`Diameterable`)クラスを使ってテストをする
+        note top of Test : 抽象(`Diameterable`)クラスを生成している。
+        @enduml
+        ```
 
 ## まとめ
 
