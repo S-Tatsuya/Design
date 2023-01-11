@@ -1,4 +1,5 @@
 from src.Wheel import Wheel
+from src.Observer import Observer
 
 
 class Gear:
@@ -6,7 +7,7 @@ class Gear:
         self._chainring = kwargs.get("chainring") or 0
         self._cog = kwargs.get("cog") or 0
         self._wheel = kwargs.get("wheel") or Wheel(0, 0)
-        self._observer = kwargs.get("observer")
+        self._observer = kwargs.get("observer") or Observer()
 
     def gear_inches(self):
         return self.ratio * self._wheel.diameter()
