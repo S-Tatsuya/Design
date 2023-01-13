@@ -93,3 +93,15 @@ def print_stars1():
     rest = n % w
     if rest:
         print("*" * rest)
+
+
+def rectangle():
+    area = int(input("面積は:"))
+
+    for i in range(1, area + 1):
+        if i * i > area:
+            break
+
+        if area % i:
+            continue
+        print(f"{i} × {area // i}")

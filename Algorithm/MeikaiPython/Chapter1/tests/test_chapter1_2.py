@@ -94,3 +94,11 @@ class TestChapter1_2:
         out, err = capfd.readouterr()
         assert out == "記号文字*を表示します。\n全部で何個:何個ごとに改行:*****\n*****\n****\n"
         assert err == ""
+
+    def test_rectanle(self, monkeypatch, capfd):
+        monkeypatch.setattr("sys.stdin", io.StringIO("32\n"))
+        sut.rectangle()
+
+        out, err = capfd.readouterr()
+        assert out == "面積は:1 × 32\n2 × 16\n4 × 8\n"
+        assert err == ""
