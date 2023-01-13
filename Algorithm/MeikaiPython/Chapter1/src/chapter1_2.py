@@ -45,3 +45,22 @@ def sum():
         sum += i
 
     print(f"{a}から{b}までの総和は{sum}です。")
+
+
+def sum_verbose1():
+    print("aからbまでの総和を求めます。")
+    a = int(input("整数a:"))
+    b = int(input("整数b:"))
+
+    if a > b:
+        a, b = b, a
+
+    sum = 0
+    for i in range(a, b + 1):
+        if i < b:
+            print(f"{i} + ", end="")
+        else:
+            print(f"{i} = ", end="")
+        sum += i
+
+    print(sum)
