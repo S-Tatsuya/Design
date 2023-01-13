@@ -27,3 +27,18 @@ class TestChapter1_2:
 
         assert out == "1からnまでの総和を求めます。\nnの値:1から5までの総和は15です。\n"
         assert err == ""
+
+    def test_sum(self, monkeypatch, capfd):
+        monkeypatch.setattr("sys.stdin", io.StringIO("3\n8\n"))
+        sut.sum()
+        out, err = capfd.readouterr()
+
+        assert out == "aからbまでの総和を求めます。\n整数a:整数b:3から8までの総和は33です。\n"
+        assert err == ""
+
+        monkeypatch.setattr("sys.stdin", io.StringIO("8\n3\n"))
+        sut.sum()
+        out, err = capfd.readouterr()
+
+        assert out == "aからbまでの総和を求めます。\n整数a:整数b:3から8までの総和は33です。\n"
+        assert err == ""

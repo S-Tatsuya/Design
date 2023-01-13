@@ -30,3 +30,18 @@ def sum_gauss():
     sum = n * (n + 1) // 2
 
     print(f"1から{n}までの総和は{sum}です。")
+
+
+def sum():
+    print("aからbまでの総和を求めます。")
+    a = int(input("整数a:"))
+    b = int(input("整数b:"))
+
+    if a > b:
+        a, b = b, a
+
+    sum = 0
+    for i in range(a, b + 1):
+        sum += i
+
+    print(f"{a}から{b}までの総和は{sum}です。")
