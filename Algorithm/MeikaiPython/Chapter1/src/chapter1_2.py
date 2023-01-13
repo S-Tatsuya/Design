@@ -76,3 +76,17 @@ def alternative1():
         print("+", end="")
 
     print()
+
+
+def print_stars1():
+    print("記号文字*を表示します。")
+    n = int(input("全部で何個:"))
+    w = int(input("何個ごとに改行:"))
+
+    for i in range(n):
+        print("*", end="")
+        if i % w == w - 1:
+            print("")
+
+    if n % w:
+        print("")

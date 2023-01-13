@@ -72,3 +72,18 @@ class TestChapter1_2:
 
         assert out == "記号文字+と-を交互に表示します。\n全部で何個:+-+-+-+-+-+-\n"
         assert err == ""
+
+        monkeypatch.setattr("sys.stdin", io.StringIO("13\n"))
+        sut.alternative1()
+        out, err = capfd.readouterr()
+
+        assert out == "記号文字+と-を交互に表示します。\n全部で何個:+-+-+-+-+-+-+\n"
+        assert err == ""
+
+    def test_print_stars1(self, monkeypatch, capfd):
+        monkeypatch.setattr("sys.stdin", io.StringIO("14\n5\n"))
+        sut.print_stars1()
+
+        out, err = capfd.readouterr()
+        assert out == "記号文字*を表示します。\n全部で何個:何個ごとに改行:*****\n*****\n****\n"
+        assert err == ""
