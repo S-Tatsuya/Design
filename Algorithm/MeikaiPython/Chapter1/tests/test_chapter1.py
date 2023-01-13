@@ -27,3 +27,18 @@ class TestChapter1:
         assert chapter1.max3_func(1, 3, 2) == 3
         assert chapter1.max3_func(2, 3, 3) == 3
         assert chapter1.max3_func(1, 2, 3) == 3
+
+    def test_med3_func(self):
+        assert chapter1.med3_func(3, 2, 1) == 2
+        assert chapter1.med3_func(3, 2, 2) == 2
+        assert chapter1.med3_func(3, 1, 2) == 2
+        assert chapter1.med3_func(3, 2, 3) == 3
+        assert chapter1.med3_func(2, 1, 3) == 2
+        assert chapter1.med3_func(3, 3, 2) == 3
+        assert chapter1.med3_func(3, 3, 3) == 3
+        assert chapter1.med3_func(2, 2, 3) == 2
+        assert chapter1.med3_func(2, 3, 1) == 2
+        assert chapter1.med3_func(2, 3, 2) == 2
+        assert chapter1.med3_func(1, 3, 2) == 2
+        assert chapter1.med3_func(2, 3, 3) == 3
+        assert chapter1.med3_func(1, 2, 3) == 2

@@ -23,3 +23,22 @@ def max3_func(a, b, c):
         maximum = c
 
     return maximum
+
+
+def med3_func(a, b, c):
+    if a >= b:  # ここに`=`が必要なことに気づけ無い
+        if b >= c:
+            return b
+
+        if a <= c:
+            return a
+
+        return c
+
+    if a > c:
+        return a
+
+    if b > c:
+        return c
+
+    return b
