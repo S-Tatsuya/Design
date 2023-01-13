@@ -83,10 +83,9 @@ def print_stars1():
     n = int(input("全部で何個:"))
     w = int(input("何個ごとに改行:"))
 
-    for i in range(n):
-        print("*", end="")
-        if i % w == w - 1:
-            print("")
+    for _ in range(n // w):
+        print("*" * w)
 
-    if n % w:
-        print("")
+    rest = n % w
+    if rest:
+        print("*" * rest)
