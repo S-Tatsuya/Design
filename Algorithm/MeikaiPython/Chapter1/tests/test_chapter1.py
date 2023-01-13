@@ -42,3 +42,28 @@ class TestChapter1:
         assert chapter1.med3_func(1, 3, 2) == 2
         assert chapter1.med3_func(2, 3, 3) == 3
         assert chapter1.med3_func(1, 2, 3) == 2
+
+    def test_judge_sign(self, monkeypatch, capfd):
+        monkeypatch.setattr("sys.stdin", io.StringIO("17\n"))
+        chapter1.judge_sign()
+
+        out, err = capfd.readouterr()
+
+        assert out == "整数:その値は正です。\n"
+        assert err == ""
+
+        monkeypatch.setattr("sys.stdin", io.StringIO("-5\n"))
+        chapter1.judge_sign()
+
+        out, err = capfd.readouterr()
+
+        assert out == "整数:その値は負です。\n"
+        assert err == ""
+
+        monkeypatch.setattr("sys.stdin", io.StringIO("0\n"))
+        chapter1.judge_sign()
+
+        out, err = capfd.readouterr()
+
+        assert out == "整数:その値は0です。\n"
+        assert err == ""

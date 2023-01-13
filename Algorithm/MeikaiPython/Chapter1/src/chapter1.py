@@ -42,3 +42,17 @@ def med3_func(a, b, c):
         return c
 
     return b
+
+
+def judge_sign():
+    n = int(input("整数:"))
+
+    if n > 0:
+        print("その値は正です。")
+        return
+
+    if n < 0:
+        print("その値は負です。")
+        return
+
+    print("その値は0です。")
