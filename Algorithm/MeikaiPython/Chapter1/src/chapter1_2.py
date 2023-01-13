@@ -63,3 +63,17 @@ def sum_verbose1():
     print(f"{b} = ", end="")
     sum += b
     print(sum)
+
+
+def alternative1():
+    print("記号文字+と-を交互に表示します。")
+    n = int(input("全部で何個:"))
+
+    for i in range(n):
+        if i % 2:
+            print("-", end="")
+            continue
+
+        print("+", end="")
+
+    print()

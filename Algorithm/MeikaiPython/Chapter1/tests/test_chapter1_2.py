@@ -64,3 +64,11 @@ class TestChapter1_2:
 
         assert out == "aからbまでの総和を求めます。\n整数a:整数b:3 + 4 + 5 + 6 + 7 = 25\n"
         assert err == ""
+
+    def test_alternative1(self, monkeypatch, capfd):
+        monkeypatch.setattr("sys.stdin", io.StringIO("12\n"))
+        sut.alternative1()
+        out, err = capfd.readouterr()
+
+        assert out == "記号文字+と-を交互に表示します。\n全部で何個:+-+-+-+-+-+-\n"
+        assert err == ""
