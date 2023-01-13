@@ -67,3 +67,28 @@ class TestChapter1:
 
         assert out == "整数:その値は0です。\n"
         assert err == ""
+
+    def test_branch(self, monkeypatch, capfd):
+        monkeypatch.setattr("sys.stdin", io.StringIO("3\n"))
+        chapter1.branch1()
+        out, err = capfd.readouterr()
+        assert out == "整数:C\n"
+        assert err == ""
+
+        monkeypatch.setattr("sys.stdin", io.StringIO("3\n"))
+        chapter1.branch2()
+        out, err = capfd.readouterr()
+        assert out == "整数:C\n"
+        assert err == ""
+
+        monkeypatch.setattr("sys.stdin", io.StringIO("4\n"))
+        chapter1.branch1()
+        out, err = capfd.readouterr()
+        assert out == "整数:C\n"
+        assert err == ""
+
+        monkeypatch.setattr("sys.stdin", io.StringIO("4\n"))
+        chapter1.branch2()
+        out, err = capfd.readouterr()
+        assert out == "整数:\n"
+        assert err == ""

@@ -56,3 +56,35 @@ def judge_sign():
         return
 
     print("その値は0です。")
+
+
+def branch1():
+    n = int(input("整数:"))
+
+    if n == 1:
+        print("A")
+        return
+
+    if n == 2:
+        print("B")
+        return
+
+    print("C")
+
+
+def branch2():
+    n = int(input("整数:"))
+
+    if n == 1:
+        print("A")
+        return
+
+    if n == 2:
+        print("B")
+        return
+
+    if n == 3:
+        print("C")
+        return
+
+    print("")
