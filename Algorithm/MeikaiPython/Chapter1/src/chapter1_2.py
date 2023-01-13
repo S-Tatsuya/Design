@@ -56,11 +56,10 @@ def sum_verbose1():
         a, b = b, a
 
     sum = 0
-    for i in range(a, b + 1):
-        if i < b:
-            print(f"{i} + ", end="")
-        else:
-            print(f"{i} = ", end="")
+    for i in range(a, b):
+        print(f"{i} + ", end="")
         sum += i
 
+    print(f"{b} = ", end="")
+    sum += b
     print(sum)
