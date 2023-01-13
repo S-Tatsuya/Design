@@ -13,7 +13,11 @@ def sum1ton_while():
 
 def sum1ton_for():
     print("1からnまでの総和を求めます。")
-    n = int(input("nの値:"))
+
+    while True:
+        n = int(input("nの値:"))
+        if n > 0:
+            break
 
     sum = 0
     for i in range(1, n + 1):

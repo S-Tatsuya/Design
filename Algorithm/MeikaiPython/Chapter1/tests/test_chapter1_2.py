@@ -20,6 +20,13 @@ class TestChapter1_2:
         assert out == "1からnまでの総和を求めます。\nnの値:1から5までの総和は15です。\n"
         assert err == ""
 
+        monkeypatch.setattr("sys.stdin", io.StringIO("-6\n0\n10\n"))
+        sut.sum1ton_for()
+        out, err = capfd.readouterr()
+
+        assert out == "1からnまでの総和を求めます。\nnの値:nの値:nの値:1から10までの総和は55です。\n"
+        assert err == ""
+
     def test_sum_gauss(self, monkeypatch, capfd):
         monkeypatch.setattr("sys.stdin", io.StringIO("5\n"))
         sut.sum_gauss()
