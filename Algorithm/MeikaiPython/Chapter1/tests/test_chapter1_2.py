@@ -108,3 +108,10 @@ class TestChapter1_2:
         out, err = capfd.readouterr()
         assert out == "1 2 3 4 5 6 7 9 10 11 12 \n"
         assert err == ""
+
+    def test_digits1(self, monkeypatch, capfd):
+        monkeypatch.setattr("sys.stdin", io.StringIO("9\n146\n57\n"))
+        sut.digits1()
+        out, err = capfd.readouterr()
+        assert out == "2桁の整数値を入力してください。\n値は:値は:値は:読み込んだのは57です。\n"
+        assert err == ""
