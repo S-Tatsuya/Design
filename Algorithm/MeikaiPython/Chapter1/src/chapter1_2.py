@@ -122,3 +122,12 @@ def for_else(seed=None):
             break
     else:
         print("\n乱数生成終了")
+
+
+def skip():
+    for i in range(1, 13):
+        if i == 8:
+            continue
+        print(i, end=" ")
+
+    print()

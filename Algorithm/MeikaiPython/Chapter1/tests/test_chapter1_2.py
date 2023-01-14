@@ -102,3 +102,9 @@ class TestChapter1_2:
         out, err = capfd.readouterr()
         assert out == "乱数は何個:97 31 27 47 \n事情により中断します。\n"
         assert err == ""
+
+    def test_skip(self, capfd):
+        sut.skip()
+        out, err = capfd.readouterr()
+        assert out == "1 2 3 4 5 6 7 9 10 11 12 \n"
+        assert err == ""
