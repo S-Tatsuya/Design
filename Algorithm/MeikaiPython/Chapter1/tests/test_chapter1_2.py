@@ -133,3 +133,10 @@ class TestChapter1_2:
             "---------------------------\n"
         )
         assert err == ""
+
+    def test_triangle_lb(self, monkeypatch, capfd):
+        monkeypatch.setattr("sys.stdin", io.StringIO("5\n"))
+        sut.trianle_lb()
+        out, err = capfd.readouterr()
+        assert out == "左下直角の二等辺三角形\n短編の長さ:*\n**\n***\n****\n*****\n"
+        assert err == ""

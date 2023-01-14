@@ -147,3 +147,14 @@ def multiplication_table():
             print(f"{i * j:3}", end="")
         print()
     print("-" * 27)
+
+
+def trianle_lb():
+    print("左下直角の二等辺三角形")
+    n = int(input("短編の長さ:"))
+
+    for i in range(n):
+        for _ in range(i + 1):
+            print("*", end="")
+
+        print()
