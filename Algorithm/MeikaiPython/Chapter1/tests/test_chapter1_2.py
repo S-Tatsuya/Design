@@ -138,7 +138,7 @@ class TestChapter1_2:
         monkeypatch.setattr("sys.stdin", io.StringIO("5\n"))
         sut.trianle_lb()
         out, err = capfd.readouterr()
-        assert out == "左下直角の二等辺三角形\n短編の長さ:*\n**\n***\n****\n*****\n"
+        assert out == "左下直角の二等辺三角形\n短辺の長さ:*\n**\n***\n****\n*****\n"
         assert err == ""
 
     def test_triangle_rb(self, monkeypatch, capfd):
