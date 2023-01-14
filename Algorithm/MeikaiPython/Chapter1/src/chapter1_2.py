@@ -125,9 +125,7 @@ def for_else(seed=None):
 
 
 def skip():
-    for i in range(1, 13):
-        if i == 8:
-            continue
+    for i in list(range(1, 8)) + list(range(9, 13)):
         print(i, end=" ")
 
     print()
