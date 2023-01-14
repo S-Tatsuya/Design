@@ -1,3 +1,6 @@
+import random
+
+
 def sum1ton_while():
     print("1からnまでの総和を求めます。")
     n = int(input("nの値:"))
@@ -105,3 +108,17 @@ def rectangle():
         if area % i:
             continue
         print(f"{i} × {area // i}")
+
+
+def for_else(seed=None):
+    n = int(input("乱数は何個:"))
+
+    for i in range(n):
+        random.seed() if seed is None else random.seed(i + seed)
+        r = random.randint(10, 99)
+        print(r, end=" ")
+        if r == 47:
+            print("\n事情により中断します。")
+            break
+    else:
+        print("\n乱数生成終了")

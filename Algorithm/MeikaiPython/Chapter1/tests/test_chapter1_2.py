@@ -102,3 +102,20 @@ class TestChapter1_2:
         out, err = capfd.readouterr()
         assert out == "面積は:1 × 32\n2 × 16\n4 × 8\n"
         assert err == ""
+
+    def test_for_else(self, monkeypatch, capfd):
+        monkeypatch.setattr("sys.stdin", io.StringIO("5\n"))
+        sut.for_else(seed=10)
+
+        out, err = capfd.readouterr()
+
+        assert out == "乱数は何個:83 67 70 43 23 \n乱数生成終了\n"
+        assert err == ""
+
+        monkeypatch.setattr("sys.stdin", io.StringIO("5\n"))
+        sut.for_else(seed=20)
+
+        out, err = capfd.readouterr()
+
+        assert out == "乱数は何個:97 31 27 47 \n事情により中断します。\n"
+        assert err == ""
