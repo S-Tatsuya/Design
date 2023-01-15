@@ -120,16 +120,19 @@ def _card_conv(x: int, r: int) -> str:
 
 def prime1():
     counter = 0
-    primes = []
-
+    primes = [2, 3]
     print("2")
+    print("3")
 
-    for n in range(3, 1001, 2):
-        for prime in primes:
-            counter += 1
-            if n % prime == 0:
+    for n in range(5, 1001, 2):
+        i = 1
+        while primes[i] * primes[i] <= n:
+            counter += 2
+            if n % primes[i] == 0:
                 break
+            i += 1
         else:
             primes.append(n)
+            counter += 1
             print(n)
     print(f"除算を行った回数:{counter}")
