@@ -1,3 +1,5 @@
+import random
+
 from typing import Any, Sequence
 
 
@@ -27,6 +29,21 @@ def max_of_test_input():
         number += 1
 
     print(f"{number}個読み込みました。")
+    print(f"最大値は{_max_of(x)}です。")
+
+
+def max_of_test_randint(seed=None):
+    print("乱数の最大値を求めます。")
+    num = int(input("乱数の個数:"))
+    lo = int(input("乱数の下限:"))
+    hi = int(input("乱数の上限:"))
+    x = []
+
+    for i in range(num):
+        random.seed() if seed is None else random.seed(i + seed)
+        x.append(random.randint(lo, hi))
+
+    print(f"{x}")
     print(f"最大値は{_max_of(x)}です。")
 
 

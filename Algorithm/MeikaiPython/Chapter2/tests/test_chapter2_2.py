@@ -28,6 +28,19 @@ class TestChapter2_2:
         )
         assert err == ""
 
+    def test_max_of_test_randint(self, monkeypatch, capfd):
+        monkeypatch.setattr("sys.stdin", io.StringIO("5\n10\n99"))
+        sut.max_of_test_randint(10)
+        out, err = capfd.readouterr()
+        assert (
+            out == "乱数の最大値を求めます。\n"
+            "乱数の個数:"
+            "乱数の下限:"
+            "乱数の上限:"
+            "[83, 67, 70, 43, 23]\n最大値は83です。\n"
+        )
+        assert err == ""
+
     def test_max_of_test(self, capfd):
         sut.max_of_test()
         out, err = capfd.readouterr()
