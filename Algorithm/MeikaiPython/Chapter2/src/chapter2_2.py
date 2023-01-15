@@ -85,3 +85,14 @@ def _reverse_array(a: MutableSequence) -> None:
     n = len(a)
     for i in range(n // 2):
         a[i], a[n - i - 1] = a[n - i - 1], a[i]
+
+
+def _card_conv(x: int, r: int) -> str:
+    d = ""
+    dcar = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+    while x > 0:
+        d += dcar[x % r]
+        x //= r
+
+    return d[::-1]

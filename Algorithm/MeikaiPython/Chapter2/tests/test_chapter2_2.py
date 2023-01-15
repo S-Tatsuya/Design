@@ -69,3 +69,6 @@ class TestChapter2_2:
         )
 
         assert err == ""
+
+    def test_card_conv(self):
+        assert sut._card_conv(29, 2) == "11101"
