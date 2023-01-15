@@ -50,3 +50,22 @@ class TestChapter2_2:
             "['DTS', 'AAC', 'FLAC']の最大値はFLACです。\n"
         )
         assert err == ""
+
+    def test_reverse(self, monkeypatch, capfd):
+        monkeypatch.setattr("sys.stdin", io.StringIO("7\n2\n5\n1\n3\n9\n6\n7\n"))
+        sut.reverse()
+        out, err = capfd.readouterr()
+        assert (
+            out == "配列の要素の並びを反転します。\n"
+            "要素数は:x[0]:x[1]:x[2]:x[3]:x[4]:x[5]:x[6]:"
+            "配列の要素の並びを反転しました。\n"
+            "x[0] = 7\n"
+            "x[1] = 6\n"
+            "x[2] = 9\n"
+            "x[3] = 3\n"
+            "x[4] = 1\n"
+            "x[5] = 5\n"
+            "x[6] = 2\n"
+        )
+
+        assert err == ""

@@ -1,6 +1,6 @@
 import random
 
-from typing import Any, Sequence
+from typing import Any, Sequence, MutableSequence
 
 
 def max():
@@ -64,3 +64,24 @@ def _max_of(datas: Sequence) -> Any:
         if data > maximum:
             maximum = data
     return maximum
+
+
+def reverse():
+    print("配列の要素の並びを反転します。")
+    nx = int(input("要素数は:"))
+    x = []
+
+    for i in range(nx):
+        x.append(int(input(f"x[{i}]:")))
+
+    _reverse_array(x)
+    print("配列の要素の並びを反転しました。")
+    for i, data in enumerate(x):
+        print(f"x[{i}] = {data}")
+
+
+def _reverse_array(a: MutableSequence) -> None:
+    """ミュータブルなシーケンスのaの要素の並び順を反転"""
+    n = len(a)
+    for i in range(n // 2):
+        a[i], a[n - i - 1] = a[n - i - 1], a[i]
