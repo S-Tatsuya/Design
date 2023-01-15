@@ -10,3 +10,20 @@ class TestChapter2_2:
         out, err = capfd.readouterr()
         assert out == "配列の最大値を求めます。\n要素数:x[0]:x[1]:x[2]:x[3]:x[4]:最大値は192です。\n"
         assert err == ""
+
+    def test_max_of_test_input(self, monkeypatch, capfd):
+        monkeypatch.setattr("sys.stdin", io.StringIO("15\n72\n64\n7\nEnd\n"))
+        sut.max_of_test_input()
+        out, err = capfd.readouterr()
+        assert (
+            out == "配列の最大値を求めます。\n"
+            "注:'End'で入力終了。\n"
+            "x[0]:"
+            "x[1]:"
+            "x[2]:"
+            "x[3]:"
+            "x[4]:"
+            "4個読み込みました。\n"
+            "最大値は72です。\n"
+        )
+        assert err == ""

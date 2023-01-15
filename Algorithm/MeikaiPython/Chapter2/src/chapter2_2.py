@@ -12,6 +12,24 @@ def max():
     print(f"最大値は{_max_of(x)}です。")
 
 
+def max_of_test_input():
+    print("配列の最大値を求めます。")
+    print("注:'End'で入力終了。")
+    x = []
+    number = 0
+
+    while True:
+        s = input(f"x[{number}]:")
+        if s == "End":
+            break
+
+        x.append(int(s))
+        number += 1
+
+    print(f"{number}個読み込みました。")
+    print(f"最大値は{_max_of(x)}です。")
+
+
 def _max_of(datas: Sequence) -> Any:
     """シーケンスdatasの要素の最大値を返却する"""
     maximum = datas[0]
