@@ -70,10 +70,7 @@ class TestChapter2_2:
 
         assert err == ""
 
-    def test_card_conv(self):
-        assert sut._card_conv(29, 2) == "11101"
-
-    def test_card_conv_main(self, monkeypatch, capfd):
+    def test_card_conv(self, monkeypatch, capfd):
         monkeypatch.setattr("sys.stdin", io.StringIO("29\n2\nN\n"))
         sut.card_conv()
         out, err = capfd.readouterr()
