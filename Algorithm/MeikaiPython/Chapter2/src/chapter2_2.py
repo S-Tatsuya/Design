@@ -30,6 +30,16 @@ def max_of_test_input():
     print(f"最大値は{_max_of(x)}です。")
 
 
+def max_of_test():
+    t = (4, 7, 5.6, 2, 3.14, 1)
+    s = "string"
+    a = ["DTS", "AAC", "FLAC"]
+
+    print(f"{t}の最大値は{_max_of(t)}です。")
+    print(f"{s}の最大値は{_max_of(s)}です。")
+    print(f"{a}の最大値は{_max_of(a)}です。")
+
+
 def _max_of(datas: Sequence) -> Any:
     """シーケンスdatasの要素の最大値を返却する"""
     maximum = datas[0]

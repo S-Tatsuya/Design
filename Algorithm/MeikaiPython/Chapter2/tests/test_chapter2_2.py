@@ -27,3 +27,13 @@ class TestChapter2_2:
             "最大値は72です。\n"
         )
         assert err == ""
+
+    def test_max_of_test(self, capfd):
+        sut.max_of_test()
+        out, err = capfd.readouterr()
+        assert out == (
+            "(4, 7, 5.6, 2, 3.14, 1)の最大値は7です。\n"
+            "stringの最大値はtです。\n"
+            "['DTS', 'AAC', 'FLAC']の最大値はFLACです。\n"
+        )
+        assert err == ""
