@@ -87,6 +87,26 @@ def _reverse_array(a: MutableSequence) -> None:
         a[i], a[n - i - 1] = a[n - i - 1], a[i]
 
 
+def card_conv():
+    print("10進数を基数変換します。")
+    while True:
+        while True:
+            no = int(input("変換する非負の整数:"))
+            if no > 0:
+                break
+
+        while True:
+            cd = int(input("何進数に変換しますか(2-36):"))
+            if 2 <= cd <= 36:
+                break
+
+        print(f"{cd}進数では{_card_conv(no, cd)}です。")
+
+        retry = input("もう一度しますか(Y...はい/N...いいえ):")
+        if retry in {"N", "n"}:
+            break
+
+
 def _card_conv(x: int, r: int) -> str:
     d = ""
     dcar = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"

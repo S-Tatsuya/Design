@@ -72,3 +72,15 @@ class TestChapter2_2:
 
     def test_card_conv(self):
         assert sut._card_conv(29, 2) == "11101"
+
+    def test_card_conv_main(self, monkeypatch, capfd):
+        monkeypatch.setattr("sys.stdin", io.StringIO("29\n2\nN\n"))
+        sut.card_conv()
+        out, err = capfd.readouterr()
+        assert (
+            out == "10進数を基数変換します。\n"
+            "変換する非負の整数:何進数に変換しますか(2-36):"
+            "2進数では11101です。\n"
+            "もう一度しますか(Y...はい/N...いいえ):"
+        )
+        assert err == ""
