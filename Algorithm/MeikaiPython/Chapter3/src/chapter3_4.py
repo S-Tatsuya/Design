@@ -1,20 +1,20 @@
 from __future__ import annotations
-from typing import Any, Type
+from typing import Any, Optional
 import hashlib
 from enum import Enum
 
 
 class Node:
-    def __init__(self, key: Any, value: Any, next: Node) -> None:
+    def __init__(self, key: Any, value: Any, next: Optional[Node]):
         self.key = key
         self.value = value
         self.next = next
 
 
 class ChainedHash:
-    def __init__(self, capacity: int) -> None:
+    def __init__(self, capacity: int):
         self.capacity = capacity
-        self.table = [None] * self.capacity
+        self.table: list[Optional[Node]] = [None] * self.capacity
 
     def hash_value(self, key: Any) -> int:
         if isinstance(key, int):
