@@ -13,15 +13,13 @@ class TestChapter4_1:
         assert sut.__len__() == 1
         assert len(sut) == 1
 
-        result = sut.pop()
-        assert result == 1
+        assert sut.pop() == 1
         assert sut.__len__() == 0
         assert len(sut) == 0
 
         sut.push(2)
         sut.push(3)
-        result = sut.peek()
-        assert result == 3
+        assert sut.peek() == 3
         assert len(sut) == 2
 
         sut.clear()
