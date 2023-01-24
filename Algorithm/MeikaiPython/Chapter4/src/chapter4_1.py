@@ -39,6 +39,13 @@ class FixedStack:
     def clear(self):
         self.ptr = 0
 
+    def find(self, value: Any) -> int:
+        for i in range(self.ptr - 1, -1, -1):
+            if self.stk[i] == value:
+                return i
+
+        return -1
+
     def is_full(self) -> bool:
         return self.ptr >= self.capacity
 

@@ -28,6 +28,13 @@ class TestChapter4_1:
         assert sut.is_empty()
         assert sut.__len__() == 0
 
+        sut.push(4)
+        sut.push(5)
+        sut.push(6)
+
+        assert sut.find(5) == 1
+        assert sut.find(7) == -1
+
     def test_full_exception(self):
         sut = FixedStack(2)
 
