@@ -24,6 +24,10 @@ class TestChapter4_1:
         assert result == 3
         assert len(sut) == 2
 
+        sut.clear()
+        assert sut.is_empty()
+        assert sut.__len__() == 0
+
     def test_full_exception(self):
         sut = FixedStack(2)
 

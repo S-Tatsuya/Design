@@ -36,6 +36,9 @@ class FixedStack:
 
         return self.stk[self.ptr - 1]
 
+    def clear(self):
+        self.ptr = 0
+
     def is_full(self) -> bool:
         return self.ptr >= self.capacity
 
