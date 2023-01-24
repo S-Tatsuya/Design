@@ -46,6 +46,14 @@ class FixedStack:
 
         return -1
 
+    def count(self, value: Any) -> int:
+        counter = 0
+        for i in range(self.ptr - 1, -1, -1):
+            if self.stk[i] == value:
+                counter += 1
+
+        return counter
+
     def is_full(self) -> bool:
         return self.ptr >= self.capacity
 
