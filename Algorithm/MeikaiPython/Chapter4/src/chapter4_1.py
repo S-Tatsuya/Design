@@ -57,6 +57,12 @@ class FixedStack:
 
         return counter
 
+    def dump(self):
+        if self.is_empty():
+            print("スタックは空です。")
+        else:
+            print(self.stk[: self.ptr])
+
     def is_full(self) -> bool:
         return self.ptr >= self.capacity
 

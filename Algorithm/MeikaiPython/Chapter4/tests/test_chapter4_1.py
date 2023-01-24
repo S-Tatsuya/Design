@@ -42,6 +42,27 @@ class TestChapter4_1:
         assert 4 in sut
         assert 7 not in sut
 
+    def test_fixed_stack_dump(self, capfd):
+        sut = FixedStack()
+        sut.push(0)
+        sut.push(3)
+        sut.push(2)
+        sut.push(8)
+        sut.push(30)
+        sut.push(7)
+        sut.push(0)
+
+        sut.dump()
+        out, err = capfd.readouterr()
+        assert out == "[0, 3, 2, 8, 30, 7, 0]\n"
+        assert err == ""
+
+        sut.clear()
+        sut.dump()
+        out, err = capfd.readouterr()
+        assert out == "スタックは空です。\n"
+        assert err == ""
+
     def test_full_exception(self):
         sut = FixedStack(2)
 
