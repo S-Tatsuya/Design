@@ -10,15 +10,19 @@ class TestChapter4_1:
         assert len(sut) == 0
 
         sut.push(1)
-
         assert sut.__len__() == 1
         assert len(sut) == 1
 
         result = sut.pop()
-
         assert result == 1
         assert sut.__len__() == 0
         assert len(sut) == 0
+
+        sut.push(2)
+        sut.push(3)
+        result = sut.peek()
+        assert result == 3
+        assert len(sut) == 2
 
     def test_full_exception(self):
         sut = FixedStack(2)
@@ -40,5 +44,10 @@ class TestChapter4_1:
         assert sut.is_empty()
         with pytest.raises(FixedStack.Empty) as e:
             _ = sut.pop()
+
+        assert str(e.value) == ""
+
+        with pytest.raises(FixedStack.Empty) as e:
+            _ = sut.peek()
 
         assert str(e.value) == ""

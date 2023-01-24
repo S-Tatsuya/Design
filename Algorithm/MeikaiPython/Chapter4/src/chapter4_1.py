@@ -30,6 +30,12 @@ class FixedStack:
         self.ptr -= 1
         return self.stk[self.ptr]
 
+    def peek(self) -> Any:
+        if self.is_empty():
+            raise FixedStack.Empty
+
+        return self.stk[self.ptr - 1]
+
     def is_full(self) -> bool:
         return self.ptr >= self.capacity
 
