@@ -1,6 +1,6 @@
 import pytest
 
-from src.chapter4_1 import FixedStack
+from src.chapter4_1 import FixedStack, Stack
 
 
 class TestChapter4_1:
@@ -90,3 +90,62 @@ class TestChapter4_1:
             _ = sut.peek()
 
         assert str(e.value) == ""
+
+    def test_stack(self):
+        sut = Stack()
+        assert sut.__len__() == 0
+        assert len(sut) == 0
+
+        sut.push(1)
+        assert sut.__len__() == 1
+        assert len(sut) == 1
+
+        assert sut.pop() == 1
+        assert sut.__len__() == 0
+        assert len(sut) == 0
+
+        sut.push(2)
+        sut.push(3)
+        assert sut.peek() == 3
+        assert len(sut) == 2
+
+        sut.clear()
+        assert sut.is_empty()
+        assert sut.__len__() == 0
+
+        sut.push(4)
+        sut.push(5)
+        sut.push(6)
+
+        assert sut.find(5) == 1
+        assert sut.find(7) == -1
+
+        sut.push(4)
+        sut.push(5)
+        sut.push(4)
+
+        assert sut.count(4) == 3
+        assert sut.count(7) == 0
+        assert 4 in sut
+        assert 7 not in sut
+
+    def test_stack_dump(self, capfd):
+        sut = Stack()
+        sut.push(0)
+        sut.push(3)
+        sut.push(2)
+        sut.push(8)
+        sut.push(30)
+        sut.push(7)
+        sut.push(0)
+
+        sut.dump()
+        out, err = capfd.readouterr()
+        assert out == "[0, 3, 2, 8, 30, 7, 0]\n"
+        assert err == ""
+
+        sut.clear()
+        sut.dump()
+        out, err = capfd.readouterr()
+        assert out == "[]\n"
+        assert err == ""
