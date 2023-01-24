@@ -39,6 +39,8 @@ class TestChapter4_1:
 
         assert sut.count(4) == 3
         assert sut.count(7) == 0
+        assert 4 in sut
+        assert 7 not in sut
 
     def test_full_exception(self):
         sut = FixedStack(2)

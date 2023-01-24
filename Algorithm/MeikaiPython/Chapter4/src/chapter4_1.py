@@ -16,6 +16,9 @@ class FixedStack:
     def __len__(self) -> int:
         return self.ptr
 
+    def __contains__(self, value: Any) -> bool:
+        return bool(self.count(value))
+
     def push(self, value: Any):
         if self.is_full():
             raise FixedStack.Full
