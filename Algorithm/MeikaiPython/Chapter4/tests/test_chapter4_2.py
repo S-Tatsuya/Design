@@ -1,6 +1,6 @@
 import pytest
 
-from src.chapter4_2 import FixedQueue
+from src.chapter4_2 import FixedQueue, SampleQueue
 
 
 class TestChapter4_2:
@@ -90,4 +90,37 @@ class TestChapter4_2:
         sut.dump()
         out, err = capfd.readouterr()
         assert out == "2 3 4 5 \n"
+        assert err == ""
+
+    def test_sample_queue(self, capfd):
+        sut = SampleQueue()
+        sut.enque(1)
+        sut.enque(2)
+        sut.enque(3)
+        sut.enque(4)
+        sut.enque(5)
+        sut.enque(6)
+        sut.enque(7)
+        sut.enque(8)
+        sut.enque(9)
+        sut.enque(10)
+        sut.dump()
+        out, err = capfd.readouterr()
+        assert out == "1 2 3 4 5 6 7 8 9 10 \n"
+        assert err == ""
+
+        sut.enque(11)
+        sut.enque(12)
+        sut.dump()
+        out, err = capfd.readouterr()
+        assert out == "3 4 5 6 7 8 9 10 12 13\n"
+        assert err == ""
+        sut.enque(13)
+        sut.enque(14)
+        sut.enque(15)
+        sut.enque(16)
+        sut.enque(17)
+        sut.dump()
+        out, err = capfd.readouterr()
+        assert out == "8 9 10 12 13\n"
         assert err == ""
