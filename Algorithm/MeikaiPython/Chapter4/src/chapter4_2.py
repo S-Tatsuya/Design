@@ -46,3 +46,36 @@ class FixedQueue:
         if self.front == self.capacity:
             self.front = 0
         return result
+
+    def peek(self) -> Any:
+        return self.que[self.front]
+
+    def find(self, value: Any) -> int:
+        for i in range(self.no):
+            idx = (i + self.front) % self.capacity
+            if self.que[idx] == value:
+                return idx
+        return -1
+
+    def count(self, value) -> int:
+        counter = 0
+        for i in range(self.no):
+            idx = (i + self.front) % self.capacity
+            if self.que[idx] == value:
+                counter += 1
+
+        return counter
+
+    def __contains__(self, value: Any) -> bool:
+        return bool(self.count(value))
+
+    def clear(self):
+        self.no = self.front = self.rear = 0
+
+    def dump(self):
+        if self.is_empty():
+            print("キューは空です。")
+        else:
+            for i in range(self.no):
+                print(self.que[i + self.front % self.capacity], end=" ")
+            print()

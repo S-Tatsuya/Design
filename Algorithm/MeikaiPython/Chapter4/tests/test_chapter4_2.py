@@ -38,6 +38,26 @@ class TestChapter4_2:
         assert sut.is_full()
         assert sut.__len__()
 
+        assert sut.peek() == 3
+
+        assert sut.find(10) == 9
+        assert sut.find(13) == -1
+
+        assert sut.count(3) == 1
+        sut.deque()
+        assert sut.count(3) == 0
+        sut.enque(7)
+        assert sut.count(7) == 2
+
+        assert 7 in sut
+        assert 3 not in sut
+
+        assert sut.is_full
+        sut.clear()
+        assert sut.is_empty()
+        assert sut.is_full() is False
+        assert sut.__len__() == 0
+
     def test_full_expection(self):
         sut = FixedQueue(2)
         sut.enque(1)
@@ -53,3 +73,21 @@ class TestChapter4_2:
             sut.deque()
 
         assert str(e.value) == ""
+
+    def test_dump(self, capfd):
+        sut = FixedQueue()
+        sut.dump()
+        out, err = capfd.readouterr()
+        assert out == "キューは空です。\n"
+        assert err == ""
+
+        sut.enque(1)
+        sut.enque(2)
+        sut.enque(3)
+        sut.enque(4)
+        sut.enque(5)
+        sut.deque()
+        sut.dump()
+        out, err = capfd.readouterr()
+        assert out == "2 3 4 5 \n"
+        assert err == ""
