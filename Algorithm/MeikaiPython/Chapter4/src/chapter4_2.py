@@ -34,3 +34,15 @@ class FixedQueue:
 
         if self.rear == self.capacity:
             self.rear = 0
+
+    def deque(self) -> Any:
+        if self.is_empty():
+            raise FixedQueue.Empty
+
+        result = self.que[self.front]
+        self.front += 1
+        self.no -= 1
+
+        if self.front == self.capacity:
+            self.front = 0
+        return result
