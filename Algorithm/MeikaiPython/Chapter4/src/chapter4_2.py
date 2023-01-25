@@ -1,3 +1,6 @@
+from typing import Any
+
+
 class FixedQueue:
     class Empty(Exception):
         pass
@@ -5,7 +8,7 @@ class FixedQueue:
     class Full(Exception):
         pass
 
-    def __init__(self, capacity: int):
+    def __init__(self, capacity: int = 10):
         self.no = 0
         self.front = 0
         self.rear = 0
@@ -20,3 +23,14 @@ class FixedQueue:
 
     def is_full(self) -> bool:
         return self.no >= self.capacity
+
+    def enque(self, x: Any):
+        if self.is_full():
+            raise FixedQueue.Full
+
+        self.que[self.rear] = x
+        self.rear += 1
+        self.no += 1
+
+        if self.rear == self.capacity:
+            self.rear = 0
