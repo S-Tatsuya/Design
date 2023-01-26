@@ -6,6 +6,7 @@ import src.chapter5_1 as sut
 class TestChapter5_1:
     def test_factorial(self):
         assert sut.factorial(3) == 6
+        assert sut.factorial(0) == 1
 
     def test_factorial_exception_value_error(self):
         with pytest.raises(ValueError) as e:
