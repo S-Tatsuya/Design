@@ -13,3 +13,7 @@ class TestChapter5_1:
             sut.factorial(-1)
 
         assert str(e.value) == "負の数は受け付けません"
+
+    def test_gcd(self):
+        assert sut.gcd(22, 8) == 2
+        assert sut.gcd(12, 30) == 6

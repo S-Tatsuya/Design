@@ -6,3 +6,10 @@ def factorial(value: int) -> int:
         return 1
 
     return value * factorial(value - 1)
+
+
+def gcd(a: int, b: int) -> int:
+    if b == 0:
+        return a
+
+    return gcd(b, a % b)
