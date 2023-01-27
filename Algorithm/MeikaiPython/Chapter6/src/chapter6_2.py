@@ -3,14 +3,15 @@ from typing import MutableSequence
 
 def bubble_sort1(target: list[int]) -> list[int]:
     result = target
-    for i in range(len(result) - 1):
-        exchng = 0
-        for j in reversed(range(i + 1, len(result))):
+    n = len(result)
+    k = 0
+    while k < n - 1:
+        last = n - 1
+        for j in reversed(range(k + 1, len(result))):
             if result[j] < result[j - 1]:
                 result[j - 1], result[j] = result[j], result[j - 1]
-                exchng += 1
-        if exchng == 0:
-            break
+                last = j
+        k = last
 
     return result
 
@@ -46,3 +47,4 @@ def bubble_sort_verbose(a: MutableSequence) -> None:
 
 if __name__ == "__main__":
     bubble_sort_verbose([6, 4, 3, 7, 1, 9, 8])
+    bubble_sort_verbose([1, 3, 9, 4, 7, 8, 6])
