@@ -20,10 +20,12 @@ def bubble_sort_verbose(a: MutableSequence) -> None:
     ccnt = 0
     scnt = 0
     n = len(a)
-    for i in range(n - 1):
-        print(f"パス{i + 1}")
-        exchng = 0
-        for j in range(n - 1, i, -1):
+    k = 0
+    i = 1
+    while k < n - 1:
+        print(f"パス{i}")
+        last = n - 1
+        for j in range(n - 1, k, -1):
             for m in range(0, n - 1):
                 print(
                     f"{a[m]:2}"
@@ -35,12 +37,12 @@ def bubble_sort_verbose(a: MutableSequence) -> None:
             if a[j - 1] > a[j]:
                 scnt += 1
                 a[j - 1], a[j] = a[j], a[j - 1]
-                exchng += 1
+                last = j
         for m in range(0, n - 1):
             print(f"{a[m]:2}", end="  ")
         print(f"{a[n - 1]:2}")
-        if exchng == 0:
-            break
+        i += 1
+        k = last
     print(f"比較は{ccnt}回でした。")
     print(f"交換は{scnt}回でした。")
 
