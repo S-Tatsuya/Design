@@ -16,6 +16,27 @@ def bubble_sort1(target: list[int]) -> list[int]:
     return result
 
 
+def shaker_sort(a: MutableSequence) -> MutableSequence:
+    result = a
+    left = 0
+    right = len(result) - 1
+    last = right
+    while left < right:
+        for j in range(right, left, -1):
+            if result[j - 1] > result[j]:
+                result[j - 1], result[j] = result[j], result[j - 1]
+                last = j
+        left = last
+
+        for j in range(left, right):
+            if result[j] > result[j + 1]:
+                result[j], result[j + 1] = result[j + 1], result[j]
+                last = j
+        right = last
+
+    return result
+
+
 def bubble_sort_verbose(a: MutableSequence) -> None:
     ccnt = 0
     scnt = 0
@@ -50,3 +71,4 @@ def bubble_sort_verbose(a: MutableSequence) -> None:
 if __name__ == "__main__":
     bubble_sort_verbose([6, 4, 3, 7, 1, 9, 8])
     bubble_sort_verbose([1, 3, 9, 4, 7, 8, 6])
+    bubble_sort_verbose([9, 1, 3, 4, 6, 7, 8])

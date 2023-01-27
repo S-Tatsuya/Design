@@ -8,3 +8,9 @@ class TestChapter6_2:
 
         test_data = [1, 3, 9, 4, 7, 8, 6]
         assert sut.bubble_sort1(test_data) == [1, 3, 4, 6, 7, 8, 9]
+
+        test_data = [9, 1, 3, 4, 6, 7, 8]
+        assert sut.bubble_sort1(test_data) == [1, 3, 4, 6, 7, 8, 9]
+
+        test_data = [9, 1, 3, 4, 6, 7, 8]
+        assert sut.shaker_sort(test_data) == [1, 3, 4, 6, 7, 8, 9]
