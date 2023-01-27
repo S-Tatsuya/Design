@@ -168,6 +168,18 @@ B -> B
 @enduml
 ```
 
+## Chapter6
+### ソートアルゴリズムの種類
+1. 安定なソート: 同一キーをもつ要素の順序がソート前後で維持される。
+2. 安定でないソート: 同一キーをもつ要素の順序がソート前後で維持されることを保証しない。
+3. 内部ソート: 1つの配列上に格納できる場合に用いるアルゴリズム
+4. 外部ソート: 1度に全てを並び替えることができない場合に用いるアルゴリズム
+
+### ソートアルゴリズムの基本要素
+1. 交換
+2. 選択
+3. 挿入
+
 
 ## 書籍情報
 - [Amazon](https://www.amazon.co.jp/%E6%96%B0%E3%83%BB%E6%98%8E%E8%A7%A3Python%E3%81%A7%E5%AD%A6%E3%81%B6%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0%E3%81%A8%E3%83%87%E3%83%BC%E3%82%BF%E6%A7%8B%E9%80%A0-%E6%9F%B4%E7%94%B0-%E6%9C%9B%E6%B4%8B-ebook/dp/B0834JWWZG/ref=sr_1_3?adgrpid=77416719506&gclid=Cj0KCQiA_P6dBhD1ARIsAAGI7HA79R_2OQ8WQ0o9-dILqQ8235FRWC7JbTzHTfa7oG7J8EK2GlOSsD0aAgvEEALw_wcB&hvadid=611397546140&hvdev=c&hvlocphy=1009285&hvnetw=g&hvqmt=e&hvrand=8745269407030564082&hvtargid=kwd-846364573423&hydadcr=4077_13255612&jp-ad-ap=0&keywords=python%E3%81%A7%E5%AD%A6%E3%81%B6%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0&qid=1673581721&sr=8-3)
