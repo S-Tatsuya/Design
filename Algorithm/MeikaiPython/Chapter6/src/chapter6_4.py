@@ -40,3 +40,20 @@ def binary_insertion_sort(datas: MutableSequence) -> MutableSequence:
             result[j] = result[j - 1]
         result[pd] = key
     return result
+
+
+def shell_sort(datas: MutableSequence) -> MutableSequence:
+    result = datas
+    n = len(result)
+    h = n // 2
+    while h > 0:
+        for i in range(h, n):
+            j = i - h
+            tmp = result[i]
+            while j >= 0 and result[j] > tmp:
+                result[j + h] = result[j]
+                j -= h
+            result[j + h] = tmp
+        h //= 2
+
+    return result
