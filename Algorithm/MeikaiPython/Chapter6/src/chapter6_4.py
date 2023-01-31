@@ -59,3 +59,31 @@ def shell_sort(datas: MutableSequence) -> MutableSequence:
         h //= 3
 
     return result
+
+
+def partition(a: MutableSequence) -> None:
+    n = len(a)
+    pl = 0
+    pr = n - 1
+    x = a[n // 2]
+
+    while pl <= pr:
+        while a[pl] < x:
+            pl += 1
+        while a[pr] > x:
+            pr -= 1
+        if pl <= pr:
+            a[pl], a[pr] = a[pr], a[pl]
+            pl += 1
+            pr -= 1
+
+    print(f"枢軸の値は{x}です。")
+    print("枢軸以下のグループ")
+    print(*a[0:pl])
+
+    if pl > pr + 1:
+        print("枢軸と一致するグループ")
+        print(*a[pr + 1 : pl])
+
+    print("枢軸以上のグループ")
+    print(*a[pr + 1 : n])
