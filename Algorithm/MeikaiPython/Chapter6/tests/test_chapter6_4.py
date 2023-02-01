@@ -43,3 +43,17 @@ class TestChapter6_4:
             8,
             9,
         ]
+
+        test_data = [10, 16, 14, 12, 1, 16, 13, 19, 17]
+        sut.quick_sort(test_data, 0, len(test_data) - 1)
+        assert test_data == [
+            1,
+            10,
+            12,
+            13,
+            14,
+            16,
+            16,
+            17,
+            19,
+        ]

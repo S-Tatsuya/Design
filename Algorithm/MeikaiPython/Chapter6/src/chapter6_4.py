@@ -94,6 +94,8 @@ def quick_sort(datas: MutableSequence, left: int, right: int) -> None:
     pr = right
     x = datas[(left + right) // 2]
 
+    print(f"datas[{left} ~ datas[{right}]]:", *datas[left : right + 1])
+
     while pl <= pr:
         while datas[pl] < x:
             pl += 1
