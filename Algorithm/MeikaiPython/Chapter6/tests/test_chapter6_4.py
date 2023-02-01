@@ -28,3 +28,18 @@ class TestChapter6_4:
             "5 7 6 8 9\n"
         )
         assert err == ""
+
+    def test_quick_sort(self):
+        test_data = [5, 8, 4, 2, 6, 1, 3, 9, 7]
+        sut.quick_sort(test_data, 0, len(test_data) - 1)
+        assert test_data == [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+        ]

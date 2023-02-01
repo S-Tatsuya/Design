@@ -87,3 +87,24 @@ def partition(a: MutableSequence) -> None:
 
     print("枢軸以上のグループ")
     print(*a[pr + 1 : n])
+
+
+def quick_sort(datas: MutableSequence, left: int, right: int) -> None:
+    pl = left
+    pr = right
+    x = datas[(left + right) // 2]
+
+    while pl <= pr:
+        while datas[pl] < x:
+            pl += 1
+        while datas[pr] > x:
+            pr -= 1
+        if pl <= pr:
+            datas[pl], datas[pr] = datas[pr], datas[pl]
+            pl += 1
+            pr -= 1
+
+    if left < pr:
+        quick_sort(datas, left, pr)
+    if pl < right:
+        quick_sort(datas, pl, right)
