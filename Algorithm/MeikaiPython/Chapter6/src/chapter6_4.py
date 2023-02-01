@@ -1,4 +1,47 @@
-from typing import MutableSequence
+from typing import MutableSequence, Any
+from collections import deque
+
+
+class Stack:
+    def __init__(self, maxlen: int = 256):
+        self.capacity = maxlen
+        self.__stk = deque([], maxlen)
+
+    def __len__(self) -> int:
+        return len(self.__stk)
+
+    def is_empty(self) -> bool:
+        return not self.__stk
+
+    def is_full(self) -> bool:
+        return len(self.__stk) == self.__stk.maxlen
+
+    def push(self, value: Any) -> None:
+        self.__stk.append(value)
+
+    def pop(self) -> Any:
+        return self.__stk.pop()
+
+    def peek(self) -> Any:
+        return self.__stk[-1]
+
+    def clear(self) -> None:
+        self.__stk.clear()
+
+    def find(self, value: Any) -> Any:
+        try:
+            return self.__stk.index(value)
+        except ValueError:
+            return -1
+
+    def count(self, value: Any) -> int:
+        return self.__stk.count(value)
+
+    def __contains__(self, value: Any) -> bool:
+        return bool(self.count(value))
+
+    def dump(self):
+        print(list(self.__stk))
 
 
 def insertion_sort(datas: MutableSequence) -> MutableSequence:
@@ -89,24 +132,25 @@ def partition(a: MutableSequence) -> None:
     print(*a[pr + 1 : n])
 
 
-def quick_sort(datas: MutableSequence, left: int, right: int) -> None:
-    pl = left
-    pr = right
-    x = datas[(left + right) // 2]
+def quick_sort(a: MutableSequence, left: int, right: int) -> None:
+    range_stack = Stack(right - left + 1)
+    range_stack.push((left, right))
 
-    print(f"datas[{left} ~ datas[{right}]]:", *datas[left : right + 1])
+    while not range_stack.is_empty():
+        pl, pr = left, right = range_stack.pop()
+        x = a[(left + right) // 2]
 
-    while pl <= pr:
-        while datas[pl] < x:
-            pl += 1
-        while datas[pr] > x:
-            pr -= 1
-        if pl <= pr:
-            datas[pl], datas[pr] = datas[pr], datas[pl]
-            pl += 1
-            pr -= 1
+        while pl <= pr:
+            while a[pl] < x:
+                pl += 1
+            while a[pr] > x:
+                pr -= 1
+            if pl <= pr:
+                a[pl], a[pr] = a[pr], a[pl]
+                pl += 1
+                pr -= 1
 
-    if left < pr:
-        quick_sort(datas, left, pr)
-    if pl < right:
-        quick_sort(datas, pl, right)
+        if left < pr:
+            range_stack.push((left, pr))
+        if pl < right:
+            range_stack.push((pl, right))
