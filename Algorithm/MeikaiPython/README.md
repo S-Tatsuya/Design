@@ -180,6 +180,30 @@ B -> B
 2. 選択
 3. 挿入
 
+### ヒープとは
+ヒープは**完全2分木**のこと。  
+**半順序木**とも呼ばれる。  
+- 条件
+    1. 親の値 >= 子の値 (例：[9 > 7, 8], [7 > 6, 5], [8 > 4])
+    2. 兄弟の大小関係は任意(例 [7, 8],[6, 5]の大小関係は関係ない)
+    3. 例
+
+        ``` plantuml
+        @startmindmap
+        * 9
+        ** 7
+        *** 6
+        *** 5
+        ** 8
+        *** 4
+        @endmindmap
+        ```
+配列の格納は関係はいかになる
+- 任意の要素a[i]に対して：
+    - 親 ... a[(i - 1) // 2]
+    - 左の子 ... a[i * 2 + 1]
+    - 右の子 ... a[i * 2 + 2]
+
 
 ## 書籍情報
 - [Amazon](https://www.amazon.co.jp/%E6%96%B0%E3%83%BB%E6%98%8E%E8%A7%A3Python%E3%81%A7%E5%AD%A6%E3%81%B6%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0%E3%81%A8%E3%83%87%E3%83%BC%E3%82%BF%E6%A7%8B%E9%80%A0-%E6%9F%B4%E7%94%B0-%E6%9C%9B%E6%B4%8B-ebook/dp/B0834JWWZG/ref=sr_1_3?adgrpid=77416719506&gclid=Cj0KCQiA_P6dBhD1ARIsAAGI7HA79R_2OQ8WQ0o9-dILqQ8235FRWC7JbTzHTfa7oG7J8EK2GlOSsD0aAgvEEALw_wcB&hvadid=611397546140&hvdev=c&hvlocphy=1009285&hvnetw=g&hvqmt=e&hvrand=8745269407030564082&hvtargid=kwd-846364573423&hydadcr=4077_13255612&jp-ad-ap=0&keywords=python%E3%81%A7%E5%AD%A6%E3%81%B6%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0&qid=1673581721&sr=8-3)
