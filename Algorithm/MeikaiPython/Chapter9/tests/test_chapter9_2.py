@@ -15,7 +15,7 @@ class TestChapter9_2:
         assert binary_tree.add(4, 4) is True
         assert binary_tree.add(1, 1) is True
         assert binary_tree.add(6, 6) is False
-        assert binary_tree.add(1, 1) is True
+        assert binary_tree.add(1, 1) is False
 
         assert binary_tree.root == sut.Node(0, 6)
         assert binary_tree.search(6) == 6
