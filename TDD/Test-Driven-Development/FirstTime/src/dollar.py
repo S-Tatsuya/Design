@@ -4,12 +4,12 @@ from typing import Any
 
 class Dollar:
     def __init__(self, amount):
-        self.amount = amount
+        self._amount = amount
 
     def times(self, multiplier: int) -> Dollar:
-        return Dollar(self.amount * multiplier)
+        return Dollar(self._amount * multiplier)
 
     def equals(self, object: Any):
-        if hasattr(object, "amount"):
-            return self.amount == object.amount
+        if hasattr(object, "_amount"):
+            return self._amount == object._amount
         return False
