@@ -1,8 +1,10 @@
 from __future__ import annotations
 from typing import Any
 
+from src.money import Money
 
-class Franc:
+
+class Franc(Money):
     def __init__(self, amount):
         self._amount = amount
 
