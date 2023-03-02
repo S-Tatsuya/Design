@@ -1,4 +1,5 @@
 from src.dollar import Dollar
+from src.franc import Franc
 
 
 class TestMoney:
