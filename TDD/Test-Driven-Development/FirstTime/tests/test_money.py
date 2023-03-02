@@ -6,3 +6,5 @@ class TestMoney:
         five = Dollar(5)
         five.times(2)
         assert five.amount == 10
+        five.times(3)
+        assert five.amount == 15
