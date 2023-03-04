@@ -7,5 +7,5 @@ class Money:
 
     def equals(self, object: Any):
         if hasattr(object, "_amount"):
-            return self._amount == object._amount
+            return self._amount == object._amount and type(self) == type(object)
         return False
