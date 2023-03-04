@@ -5,4 +5,4 @@ from src.money import Money
 
 class Franc(Money):
     def times(self, multiplier: int) -> Money:
-        return Franc(self._amount * multiplier, "CHF")
+        return Franc(self._amount * multiplier, self._currency)

@@ -5,4 +5,4 @@ from src.money import Money
 
 class Dollar(Money):
     def times(self, multiplier: int) -> Money:
-        return Dollar(self._amount * multiplier, "USD")
+        return Dollar(self._amount * multiplier, self._currency)
