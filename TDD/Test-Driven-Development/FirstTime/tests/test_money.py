@@ -1,3 +1,4 @@
+from src.money import Money
 from src.money_factory import MoneyFactory
 
 
@@ -22,3 +23,6 @@ class TestMoney:
     def test_currency(self):
         assert MoneyFactory.dollar(1).currency() == "USD"
         assert MoneyFactory.franc(1).currency() == "CHF"
+
+    def test_different_class_equality(self):
+        assert Money(10, "CHF").equals(MoneyFactory.franc(10, "CHF"))
