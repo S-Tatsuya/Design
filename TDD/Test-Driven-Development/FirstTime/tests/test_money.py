@@ -1,5 +1,4 @@
 from src.money_factory import MoneyFactory
-from src.franc import Franc
 
 
 class TestMoney:
@@ -11,11 +10,11 @@ class TestMoney:
     def test_equality(self):
         assert MoneyFactory.dollar(5).equals(MoneyFactory.dollar(5))
         assert not MoneyFactory.dollar(5).equals(MoneyFactory.dollar(6))
-        assert Franc(5).equals(Franc(5))
-        assert not Franc(5).equals(Franc(6))
-        assert not Franc(5).equals(MoneyFactory.dollar(5))
+        assert MoneyFactory.franc(5).equals(MoneyFactory.franc(5))
+        assert not MoneyFactory.franc(5).equals(MoneyFactory.franc(6))
+        assert not MoneyFactory.franc(5).equals(MoneyFactory.dollar(5))
 
     def test_franc_multiplication(self):
         five = MoneyFactory.franc(5)
-        assert Franc(10).equals(five.times(2))
-        assert Franc(15).equals(five.times(3))
+        assert MoneyFactory.franc(10).equals(five.times(2))
+        assert MoneyFactory.franc(15).equals(five.times(3))
