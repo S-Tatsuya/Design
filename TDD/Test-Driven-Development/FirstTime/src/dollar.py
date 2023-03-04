@@ -6,3 +6,6 @@ from src.money import Money
 class Dollar(Money):
     def times(self, multiplier: int) -> Money:
         return Dollar(self._amount * multiplier)
+
+    def currency(self) -> str:
+        return "USD"

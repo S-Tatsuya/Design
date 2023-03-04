@@ -15,3 +15,7 @@ class Money(metaclass=ABCMeta):
     @abstractmethod
     def times(self, multipliner: int) -> Money:
         pass
+
+    @abstractmethod
+    def currency(self) -> str:
+        pass
