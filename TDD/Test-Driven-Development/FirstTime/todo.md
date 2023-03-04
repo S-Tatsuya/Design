@@ -13,3 +13,4 @@
 - [ ] timesの一般化
 - [x] FrancとDollarを比較する
 - [ ] 通貨の概念
+- [ ] test_franc_multiplicationを削除する？
