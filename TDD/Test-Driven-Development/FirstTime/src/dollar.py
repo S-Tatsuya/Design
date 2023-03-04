@@ -9,6 +9,3 @@ class Dollar(Money):
 
     def times(self, multiplier: int) -> Money:
         return Dollar(self._amount * multiplier)
-
-    def currency(self) -> str:
-        return self._currency

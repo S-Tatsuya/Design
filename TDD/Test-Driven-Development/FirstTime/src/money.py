@@ -13,10 +13,9 @@ class Money(metaclass=ABCMeta):
             return self._amount == object._amount and type(self) == type(object)
         return False
 
-    @abstractmethod
-    def times(self, multipliner: int) -> Money:
-        pass
+    def currency(self) -> str:
+        return self._currency
 
     @abstractmethod
-    def currency(self) -> str:
+    def times(self, multipliner: int) -> Money:
         pass
