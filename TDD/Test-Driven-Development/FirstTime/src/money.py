@@ -1,16 +1,15 @@
 from __future__ import annotations
-from abc import ABCMeta, abstractmethod
 from typing import Any
 
 
-class Money(metaclass=ABCMeta):
+class Money:
     def __init__(self, amount, currency):
         self._amount = amount
         self._currency = currency
 
     def equals(self, object: Any):
         if hasattr(object, "_amount"):
-            return self._amount == object._amount and type(self) == type(object)
+            return self._amount == object._amount and self._currency == object._currency
         return False
 
     def currency(self) -> str:
