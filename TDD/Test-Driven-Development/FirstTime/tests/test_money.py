@@ -13,6 +13,7 @@ class TestMoney:
         assert not Dollar(5).equals(Dollar(6))
         assert Franc(5).equals(Franc(5))
         assert not Franc(5).equals(Franc(6))
+        assert not Franc(5).equals(Dollar(5))
 
     def test_franc_multiplication(self):
         five = Franc(5)
