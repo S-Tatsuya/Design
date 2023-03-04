@@ -25,4 +25,4 @@ class TestMoney:
         assert MoneyFactory.franc(1).currency() == "CHF"
 
     def test_different_class_equality(self):
-        assert Money(10, "CHF").equals(MoneyFactory.franc(10, "CHF"))
+        assert Money(10, "CHF").equals(MoneyFactory.franc(10))
