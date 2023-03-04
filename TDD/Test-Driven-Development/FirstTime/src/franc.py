@@ -11,4 +11,4 @@ class Franc(Money):
         return Franc(self._amount * multiplier)
 
     def currency(self) -> str:
-        return "CHF"
+        return self._currency

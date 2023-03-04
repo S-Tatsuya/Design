@@ -11,4 +11,4 @@ class Dollar(Money):
         return Dollar(self._amount * multiplier)
 
     def currency(self) -> str:
-        return "USD"
+        return self._currency
