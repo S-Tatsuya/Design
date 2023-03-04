@@ -4,8 +4,9 @@ from typing import Any
 
 
 class Money(metaclass=ABCMeta):
-    def __init__(self, amount):
+    def __init__(self, amount, currency):
         self._amount = amount
+        self._currency = currency
 
     def equals(self, object: Any):
         if hasattr(object, "_amount"):
