@@ -18,3 +18,7 @@ class TestMoney:
         five = MoneyFactory.franc(5)
         assert MoneyFactory.franc(10).equals(five.times(2))
         assert MoneyFactory.franc(15).equals(five.times(3))
+
+    def test_currency(self):
+        assert MoneyFactory.dollar(1).currency() == "USD"
+        assert MoneyFactory.franc(1).currency() == "CHF"
