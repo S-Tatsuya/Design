@@ -16,6 +16,5 @@ class Money(metaclass=ABCMeta):
     def currency(self) -> str:
         return self._currency
 
-    @abstractmethod
     def times(self, multipliner: int) -> Money:
         pass
