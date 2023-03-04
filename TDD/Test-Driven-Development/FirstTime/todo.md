@@ -9,6 +9,7 @@
 - [ ] 他のオブジェクトとの等価性比較
 - [x] 5CHF * 2 = 10CHF
 - [ ] DollarとFrancの重複
+    - コンストラクタの重複を削除
 - [x] equalsの一般化
 - [ ] timesの一般化
 - [x] FrancとDollarを比較する
