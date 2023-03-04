@@ -15,5 +15,5 @@ class Money:
     def currency(self) -> str:
         return self._currency
 
-    def times(self, multipliner: int) -> Money:
-        pass
+    def times(self, multiplier: int) -> Money:
+        return Money(self._amount * multiplier, self._currency)
