@@ -1,3 +1,4 @@
+from src.money_factory import MoneyFactory
 from src.dollar import Dollar
 from src.franc import Franc
 
