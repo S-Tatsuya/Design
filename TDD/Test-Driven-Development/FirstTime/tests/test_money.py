@@ -4,7 +4,7 @@ from src.franc import Franc
 
 class TestMoney:
     def test_multiplication(self):
-        five = Dollar(5)
+        five = MoneyFactory.dollar(5)
         assert Dollar(10).equals(five.times(2))
         assert Dollar(15).equals(five.times(3))
 
