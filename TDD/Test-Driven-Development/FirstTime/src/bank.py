@@ -1,3 +1,6 @@
+from src.money_factory import MoneyFactory
+
+
 class Bank:
     def reduce(self, source, to):
-        return None
+        return MoneyFactory.dollar(10)
