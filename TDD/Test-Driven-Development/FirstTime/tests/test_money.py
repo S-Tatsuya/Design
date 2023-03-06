@@ -24,3 +24,10 @@ class TestMoney:
         bank = Bank()
         reduced = bank.reduce(sum, "USD")
         assert MoneyFactory.dollar(10).equals(reduced)
+
+    def test_plus_returns_sum(self):
+        five = MoneyFactory.dollar(5)
+        result = five.plus(five)
+        sum = (Sum) result
+        assert five.equals(sum.augend)
+        assert five.equals(sum.addend)
