@@ -1,4 +1,6 @@
 from src.money_factory import MoneyFactory
+from src.expression import Expression
+from src.bank import Bank
 
 
 class TestMoney:
@@ -18,7 +20,7 @@ class TestMoney:
 
     def test_simple_addition(self):
         five = MoneyFactory.dollar(5)
-        sum = five.plus(five)
+        sum: Expression = five.plus(five)
         bank = Bank()
         reduced = bank.reduce(sum, "USD")
         assert MoneyFactory.dollar(10).equals(reduced)
