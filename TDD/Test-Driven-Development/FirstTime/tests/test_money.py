@@ -1,6 +1,7 @@
 from src.money_factory import MoneyFactory
 from src.expression import Expression
 from src.bank import Bank
+from src.sum import Sum
 
 
 class TestMoney:
@@ -31,3 +32,9 @@ class TestMoney:
         sum = result
         assert five.equals(sum.augend)
         assert five.equals(sum.addend)
+
+    def test_reduce_sum(self):
+        sum = Sum(MoneyFactory.dollar(3), MoneyFactory.dollar(4))
+        bank = Bank()
+        result = bank.reduce(sum, "USD")
+        assert MoneyFactory.dollar(7).equals(result)
