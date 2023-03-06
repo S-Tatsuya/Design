@@ -10,6 +10,10 @@ class Money(Expression):
         self._amount = amount
         self._currency = currency
 
+    @property
+    def amount(self):
+        return self._amount
+
     def equals(self, object: Any):
         if hasattr(object, "_amount"):
             return self._amount == object._amount and self._currency == object._currency

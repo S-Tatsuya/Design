@@ -9,3 +9,7 @@ class MoneyFactory:
     @staticmethod
     def franc(amount):
         return Money(amount, "CHF")
+
+    @staticmethod
+    def money(amount, currency):
+        return Money(amount, currency)
