@@ -2,6 +2,7 @@ from __future__ import annotations
 from typing import Any
 
 from src.expression import Expression
+from src.sum import Sum
 
 
 class Money(Expression):
@@ -21,4 +22,4 @@ class Money(Expression):
         return Money(self._amount * multiplier, self._currency)
 
     def plus(self, addend: Money) -> Expression:
-        return Money(self._amount + addend._amount, self._currency)
+        return Sum(self, addend)
