@@ -15,3 +15,7 @@ class TestMoney:
     def test_currency(self):
         assert MoneyFactory.dollar(1).currency() == "USD"
         assert MoneyFactory.franc(1).currency() == "CHF"
+
+    def test_simple_addition(self):
+        sum = MoneyFactory.dollar(5).plus(MoneyFactory.dollar(5))
+        assert MoneyFactory.dollar(10).equals(sum)
