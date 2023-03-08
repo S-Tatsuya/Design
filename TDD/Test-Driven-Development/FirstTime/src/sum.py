@@ -12,3 +12,6 @@ class Sum(Expression):
             self.augend.reduce(bank, to).amount + self.addend.reduce(bank, to).amount
         )
         return MoneyFactory.MoneyFactory.money(amount, to)
+
+    def plus(self, added: Expression):
+        return None
