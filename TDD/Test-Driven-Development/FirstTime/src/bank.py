@@ -1,9 +1,15 @@
+from src.pair import Pair
+
+
 class Bank:
+    def __init__(self):
+        self.rates: dict[Pair, int] = {}
+
     def reduce(self, source, to):
         return source.reduce(self, to)
 
     def add_rate(self, base, to, rate):
-        pass
+        self.rates[Pair(base, to)] = rate
 
     def rate(self, base, to):
-        return 2 if (base.currency() == "CHF" and to == "USD") else 1
+        return 1 if base == to else self.rates.get(Pair(base, to))

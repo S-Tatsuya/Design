@@ -28,5 +28,5 @@ class Money(Expression):
         return Sum(self, addend)
 
     def reduce(self, bank, to):
-        rate = bank.rate(self, to)
+        rate = bank.rate(self.currency(), to)
         return Money(self.amount / rate, to)

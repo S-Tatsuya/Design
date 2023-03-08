@@ -49,3 +49,6 @@ class TestMoney:
         bank.add_rate("CHF", "USD", 2)
         result = bank.reduce(MoneyFactory.franc(2), "USD")
         assert MoneyFactory.dollar(1).equals(result)
+
+    def test_identity_rate(self):
+        assert Bank().rate("USD", "USD") == 1
