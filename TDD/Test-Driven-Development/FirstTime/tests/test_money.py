@@ -38,3 +38,8 @@ class TestMoney:
         bank = Bank()
         result = bank.reduce(sum, "USD")
         assert MoneyFactory.dollar(7).equals(result)
+
+    def test_reduce_money(self):
+        bank = Bank()
+        result = bank.reduce(MoneyFactory.dollar(1), "USD")
+        assert MoneyFactory.dollar(1).equals(result)
