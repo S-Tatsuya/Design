@@ -15,3 +15,6 @@ class Sum(Expression):
 
     def plus(self, added: Expression):
         return Sum(self, added)
+
+    def times(self, multiplier):
+        return Sum(self.augend.times(multiplier), self.addend.times(multiplier))
