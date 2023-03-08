@@ -43,3 +43,9 @@ class TestMoney:
         bank = Bank()
         result = bank.reduce(MoneyFactory.dollar(1), "USD")
         assert MoneyFactory.dollar(1).equals(result)
+
+    def test_reduce_money_different_currency(self):
+        bank = Bank()
+        bank.add_rate("CHF", "USD", 2)
+        result = bank.reduce(MoneyFactory.franc(2), "USD")
+        assert MoneyFactory.dollar(1).equals(result)
