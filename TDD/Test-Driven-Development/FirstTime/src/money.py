@@ -1,6 +1,5 @@
 from __future__ import annotations
 from typing import Any
-
 from src.expression import Expression
 from src.sum import Sum
 
@@ -28,5 +27,6 @@ class Money(Expression):
     def plus(self, addend: Money) -> Expression:
         return Sum(self, addend)
 
-    def reduce(self, _):
-        return self
+    def reduce(self, to):
+        rate = 2 if (self.currency() == "CHF" and to == "USD") else 1
+        return Money(self.amount / rate, to)
