@@ -14,4 +14,4 @@ class Sum(Expression):
         return MoneyFactory.MoneyFactory.money(amount, to)
 
     def plus(self, added: Expression):
-        return None
+        return Sum(self, added)
