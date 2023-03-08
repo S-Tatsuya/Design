@@ -59,4 +59,4 @@ class TestMoney:
         bank = Bank()
         bank.add_rate("CHF", "USD", 2)
         result = bank.reduce(fiveBucks.plus(tenFrancs), "USD")
-        assert result == MoneyFactory.dollar(10)
+        assert result.equals(MoneyFactory.dollar(10))
