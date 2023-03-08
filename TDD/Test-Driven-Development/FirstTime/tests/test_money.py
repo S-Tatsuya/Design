@@ -60,3 +60,12 @@ class TestMoney:
         bank.add_rate("CHF", "USD", 2)
         result = bank.reduce(fiveBucks.plus(tenFrancs), "USD")
         assert result.equals(MoneyFactory.dollar(10))
+
+    def test_sum_plus_money(self):
+        fiveBucks: Expression = MoneyFactory.dollar(5)
+        tenFrancs: Expression = MoneyFactory.franc(10)
+        bank = Bank()
+        bank.add_rate("CHF", "USD", 2)
+        sum = Sum(fiveBucks, tenFrancs).plus(fiveBucks)
+        result = bank.reduce(sum, "USD")
+        assert result.equals(MoneyFactory.dollar(15))
