@@ -27,3 +27,6 @@ class Money(Expression):
 
     def plus(self, addend: Money) -> Expression:
         return Sum(self, addend)
+
+    def reduce(self, to):
+        return self
