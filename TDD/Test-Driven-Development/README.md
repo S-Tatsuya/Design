@@ -60,6 +60,7 @@
         - `from import` ではなく `import` を使うことで解決できるかもしれない
             - [参考](https://www.web-dev-qa-db-ja.com/ja/python/pythonで循環インポートを避ける方法は？/939940362/)
             - 解決はできた
+- 第13章移行の `Expression(式)` のメタファーを理解できなかった。
 
 ## 書籍情報
 - [テスト駆動開発](https://www.amazon.co.jp/%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA-Kent-Beck/dp/4274217884/ref=sr_1_2?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=25K57BGJDY9NC&keywords=%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95&qid=1677750275&sprefix=%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%2Caps%2C191&sr=8-2)
