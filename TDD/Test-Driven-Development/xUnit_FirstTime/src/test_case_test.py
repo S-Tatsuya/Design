@@ -15,3 +15,4 @@ class TestCaseTest(TestCase):
 
 
 TestCaseTest("testTemplateMethod").run()
+TestCaseTest("testResult").run()
