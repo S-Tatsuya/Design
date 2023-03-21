@@ -1,3 +1,4 @@
+from math import pi
 from dataclasses import dataclass
 
 
@@ -54,12 +55,16 @@ class RevealingReferences:
 
 @dataclass
 class Wheel:
-    rim: int
-    tire: int
+    rim: float
+    tire: float
 
     @property
     def diameter(self):
         return self.rim + (self.tire * 2)
+
+    @property
+    def circumference(self):
+        return self.diameter * pi
 
 
 if __name__ == "__main__":
@@ -67,6 +72,7 @@ if __name__ == "__main__":
     print(Gear(30, 27, 24, 1.25).ratio)
     print(Gear(52, 11, 26, 1.5).gear_inches)
     print(Gear(30, 27, 24, 1.25).gear_inches)
+    print(Wheel(26, 1.5).circumference)
 
     object = RevealingReferences([[622, 20], [622, 23], [559, 30], [559, 40]])
     for diameters in object.diameters:
