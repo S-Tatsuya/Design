@@ -1,3 +1,6 @@
+from dataclasses import dataclass
+
+
 class Gear:
     def __init__(self, chainring, cog, rim, tire):
         self._chainring = chainring
@@ -30,17 +33,25 @@ class Gear:
         return self.ratio * (self.rim + (self.tire * 2))
 
 
-class ObscuringReferences:
+class RevealingReferences:
+    @dataclass
+    class Wheel:
+        rim: int
+        tire: int
+
     def __init__(self, data):
-        self._data = data
+        self._wheels = self._wheelify(data)
 
     @property
-    def data(self):
-        return self._data
+    def wheels(self):
+        return self._wheels
+
+    def _wheelify(self, data):
+        return [self.Wheel(x[0], x[1]) for x in data]
 
     @property
     def diameters(self):
-        return [(x[0] + (x[1] * 2)) for x in self.data]
+        return [wheel.rim + (wheel.tire * 2) for wheel in self.wheels]
 
 
 if __name__ == "__main__":
@@ -49,6 +60,6 @@ if __name__ == "__main__":
     print(Gear(52, 11, 26, 1.5).gear_inches)
     print(Gear(30, 27, 24, 1.25).gear_inches)
 
-    object = ObscuringReferences([[622, 20], [622, 23], [559, 30], [559, 40]])
+    object = RevealingReferences([[622, 20], [622, 23], [559, 30], [559, 40]])
     for diameters in object.diameters:
         print(diameters)
