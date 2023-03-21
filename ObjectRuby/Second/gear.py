@@ -39,6 +39,10 @@ class RevealingReferences:
         rim: int
         tire: int
 
+        @property
+        def diameter(self):
+            return self.rim + (self.tire * 2)
+
     def __init__(self, data):
         self._wheels = self._wheelify(data)
 
@@ -51,7 +55,7 @@ class RevealingReferences:
 
     @property
     def diameters(self):
-        return [wheel.rim + (wheel.tire * 2) for wheel in self.wheels]
+        return [wheel.diameter for wheel in self.wheels]
 
 
 if __name__ == "__main__":
