@@ -5,8 +5,7 @@ class Gear:
     def __init__(self, chainring, cog, rim, tire):
         self._chainring = chainring
         self._cog = cog
-        self._rim = rim
-        self._tire = tire
+        self._wheel = Wheel(rim, tire)
 
     @property
     def chainring(self):
@@ -17,12 +16,16 @@ class Gear:
         return self._cog
 
     @property
+    def wheel(self):
+        return self._wheel
+
+    @property
     def rim(self):
-        return self._rim
+        return self.wheel.rim
 
     @property
     def tire(self):
-        return self._tire
+        return self.wheel.tire
 
     @property
     def ratio(self):
@@ -30,19 +33,10 @@ class Gear:
 
     @property
     def gear_inches(self):
-        return self.ratio * (self.rim + (self.tire * 2))
+        return self.ratio * self.wheel.diameter
 
 
 class RevealingReferences:
-    @dataclass
-    class Wheel:
-        rim: int
-        tire: int
-
-        @property
-        def diameter(self):
-            return self.rim + (self.tire * 2)
-
     def __init__(self, data):
         self._wheels = self._wheelify(data)
 
@@ -51,11 +45,21 @@ class RevealingReferences:
         return self._wheels
 
     def _wheelify(self, data):
-        return [self.Wheel(x[0], x[1]) for x in data]
+        return [Wheel(x[0], x[1]) for x in data]
 
     @property
     def diameters(self):
         return [wheel.diameter for wheel in self.wheels]
+
+
+@dataclass
+class Wheel:
+    rim: int
+    tire: int
+
+    @property
+    def diameter(self):
+        return self.rim + (self.tire * 2)
 
 
 if __name__ == "__main__":
