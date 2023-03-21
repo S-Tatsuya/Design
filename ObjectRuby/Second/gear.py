@@ -6,12 +6,28 @@ class Gear:
         self._tire = tire
 
     @property
+    def chainring(self):
+        return self._chainring
+
+    @property
+    def cog(self):
+        return self._cog
+
+    @property
+    def rim(self):
+        return self._rim
+
+    @property
+    def tire(self):
+        return self._tire
+
+    @property
     def ratio(self):
-        return self._chainring / self._cog
+        return self.chainring / self.cog
 
     @property
     def gear_inches(self):
-        return self.ratio * (self._rim + (self._tire * 2))
+        return self.ratio * (self.rim + (self.tire * 2))
 
 
 if __name__ == "__main__":
