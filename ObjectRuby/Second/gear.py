@@ -3,10 +3,10 @@ from dataclasses import dataclass
 
 
 class Gear:
-    def __init__(self, chainring, cog, rim, tire):
+    def __init__(self, chainring, cog, wheel):
         self._chainring = chainring
         self._cog = cog
-        self._wheel = Wheel(rim, tire)
+        self._wheel = wheel
 
     @property
     def chainring(self):
@@ -68,10 +68,10 @@ class Wheel:
 
 
 if __name__ == "__main__":
-    print(Gear(52, 11, 26, 1.5).ratio)
-    print(Gear(30, 27, 24, 1.25).ratio)
-    print(Gear(52, 11, 26, 1.5).gear_inches)
-    print(Gear(30, 27, 24, 1.25).gear_inches)
+    print(Gear(52, 11, Wheel(26, 1.5)).ratio)
+    print(Gear(30, 27, Wheel(24, 1.25)).ratio)
+    print(Gear(52, 11, Wheel(26, 1.5)).gear_inches)
+    print(Gear(30, 27, Wheel(24, 1.25)).gear_inches)
     print(Wheel(26, 1.5).circumference)
 
     object = RevealingReferences([[622, 20], [622, 23], [559, 30], [559, 40]])
