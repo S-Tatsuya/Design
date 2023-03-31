@@ -23,12 +23,13 @@ class Trip:
 
     def prepare(self, preparers):
         for preparer in preparers:
-            if isinstance(preparer, Mechanic):
-                preparer.prepare_bicycles(self.bicycles)
-            elif isinstance(preparer, TripCoordinator):
-                preparer.buy_food(self.customers)
-            elif isinstance(preparer, Driver):
-                preparer.gas_up(self.vehicle)
+            match preparer:
+                case Mechanic():
+                    preparer.prepare_bicycles(self.bicycles)
+                case TripCoordinator():
+                    preparer.buy_food(self.customers)
+                case Driver():
+                    preparer.gas_up(self.vehicle)
 
     def __str__(self):
         result = "Bicyles:"
