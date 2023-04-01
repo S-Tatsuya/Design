@@ -1,6 +1,6 @@
 class Driver:
-    def gas_up(self, vehicle):
-        self._gas_up(vehicle)
+    def prepare_trip(self, trip):
+        self._gas_up(trip.vehicle)
 
     def _gas_up(self, vehicle):
         vehicle.gas_up()

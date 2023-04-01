@@ -25,11 +25,11 @@ class Trip:
         for preparer in preparers:
             match preparer:
                 case Mechanic():
-                    preparer.prepare_bicycles(self.bicycles)
+                    preparer.prepare_trip(self)
                 case TripCoordinator():
-                    preparer.buy_food(self.customers)
+                    preparer.prepare_trip(self)
                 case Driver():
-                    preparer.gas_up(self.vehicle)
+                    preparer.prepare_trip(self)
 
     def __str__(self):
         result = "Bicyles:"

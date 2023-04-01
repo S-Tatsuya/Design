@@ -1,6 +1,7 @@
 class Mechanic:
-    def prepare_bicycles(self, bicycles):
-        bicycles = list(map(self._prepare_bicycle, bicycles))
+    def prepare_trip(self, trip):
+        for bicycle in trip.bicycles:
+            self._prepare_bicycle(bicycle)
 
     def _prepare_bicycle(self, bicycle):
         bicycle.prepare()
