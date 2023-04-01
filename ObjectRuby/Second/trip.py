@@ -1,8 +1,3 @@
-from mechanic import Mechanic
-from trip_coordinator import TripCoordinator
-from driver import Driver
-
-
 class Trip:
     def __init__(self, bicycles, customers, vehicle):
         self._bicycles = bicycles
@@ -23,13 +18,7 @@ class Trip:
 
     def prepare(self, preparers):
         for preparer in preparers:
-            match preparer:
-                case Mechanic():
-                    preparer.prepare_trip(self)
-                case TripCoordinator():
-                    preparer.prepare_trip(self)
-                case Driver():
-                    preparer.prepare_trip(self)
+            preparer.prepare_trip(self)
 
     def __str__(self):
         result = "Bicyles:"
